@@ -18,29 +18,31 @@ Claude Code가 콘텐츠 작성, 구조화, 연결을 직접 수행하는 것이
 
 ## 디렉토리 구조
 
+```
 claude-wiki-fe/
 ├── src/
 ├── .claude/
-│   ├── agent/              # 멀티 에이전트 구성 관련
-│       └── reviewer.md         
-│   ├── hooks/              # 작업 전후 자동 실행 스크립트
+│   ├── agent/                  # 멀티 에이전트 구성 관련
+│   │   └── reviewer.md
+│   ├── hooks/                  # 작업 전후 자동 실행 스크립트
 │   ├── rules/                  # Claude가 따라야 할 도메인 규칙
 │   │   ├── constraints.md
 │   │   ├── git-flow.md
-│   │   └── convention.md
-│   ├── skills/             # 재사용 가능한 작업 단위
+│   │   └── conventions.md
+│   ├── skills/                 # 재사용 가능한 작업 단위
 │   │   ├── commit.md           # commit 플로우
 │   │   ├── pr.md               # pr 플로우
 │   │   └── issues.md           # issue 플로우
-│   ├── settings.json       # 권한 및 동작 설정
-├── context/                # 기타 프로젝트 맥락 (etc.)
-│   │   ├── architecture.md         # 유저 시나리오
-│   │   └── scenario.md             # 유저 시나리오
+│   └── settings.json           # 권한 및 동작 설정
+├── context/                    # 기타 프로젝트 맥락
+│   ├── architecture.md         # 아키텍처
+│   └── scenario.md             # 유저 시나리오
 ├── .gitignore
 ├── CLAUDE.md
-├── DESIGN.md               # 공통 디자인 시스템
-├── HARNESS-LOG.md          # 하네스 실험 기록 (절대 임의 수정 금지)
+├── DESIGN.md                   # 공통 디자인 시스템
+├── HARNESS-LOG.md              # 하네스 실험 기록 (절대 임의 수정 금지)
 └── README.md
+```
 
 
 ## 기술 스택(버전 명시)
