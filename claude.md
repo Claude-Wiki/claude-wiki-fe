@@ -45,9 +45,12 @@ claude-wiki-fe/
 
 ## 기술 스택(버전 명시)
 
-- javascript, typescript(5.X)
-- tailwind CSS(4.X)
-  (프로젝트 시작 시 작성)
+- **언어**: JavaScript, TypeScript (5.x)
+- **스타일링**: Tailwind CSS (4.x)
+- **테스트**: Vitest (유닛/통합), Cypress (E2E)
+- **패키지 매니저**: Bun
+- **포맷팅 & 린팅**: Prettier, ESLint
+- **Git 훅 관리**: Husky
 
 ## 빌드 명령어
 
