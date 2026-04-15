@@ -74,3 +74,29 @@ export const checkIsAdmin = async (): Promise<boolean> => {
 ```
 
 > Custom Claim `is_admin: true` 는 백엔드(`asd/`)에서 `npm run set-admin` 으로 부여.
+
+---
+
+## 어드민 로그인 (이메일/비밀번호)
+
+```typescript
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+const auth = getAuth();
+await signInWithEmailAndPassword(auth, email, password);
+```
+
+로그인 후 Firestore 쓰기 요청 시 `is_admin: true` Custom Claim이 자동으로 포함되어 Security Rules 통과.
+
+---
+
+## CRUD 테스트
+
+`scripts/client-crud-test.ts` — 실제 Firebase/에뮬레이터 대상 CRUD 전체 흐름 검증.
+
+```bash
+npm run crud-test      # 실제 Firebase
+npm run crud-test:dev  # 로컬 에뮬레이터 (npm run emulator 먼저 실행)
+```
+
+> 테스트 계정 정보는 `.env`의 `TEST_ADMIN_EMAIL`, `TEST_ADMIN_PASSWORD`로 관리 (커밋 금지).
