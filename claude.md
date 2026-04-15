@@ -14,7 +14,7 @@ Claude Code가 콘텐츠 작성, 구조화, 연결을 직접 수행하는 것이
 
 ## 아키텍쳐
 
-(프로젝트 시작 시 작성)
+MVC 패턴 적극 도입
 
 ## 디렉토리 구조
 
@@ -44,7 +44,6 @@ claude-wiki-fe/
 └── README.md
 ```
 
-
 ## 기술 스택(버전 명시)
 
 - **언어**: JavaScript, TypeScript (5.x)
@@ -67,3 +66,4 @@ claude-wiki-fe/
 - 커밋 전에는 skills/commit.md를 조회홰라.
 - UX/UI 디자인을 할때 design.md을 참조해라.
 - 메시지를 작성할때는 context/UXWriting.md을 참조해라.
+- 유저 플로우를 고려할때에는 context/scenario.md을 참조해라.
