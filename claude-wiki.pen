@@ -1,0 +1,3494 @@
+{
+  "version": "2.10",
+  "children": [
+    {
+      "type": "frame",
+      "id": "tO6yl",
+      "x": 0,
+      "y": 0,
+      "name": "Claude Wiki - Docs",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "iSI9g",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$bg-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "gap": 24,
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "8pBEg",
+              "name": "leftGroup",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 6,
+                  "id": "dpl0D",
+                  "name": "logo",
+                  "width": 28,
+                  "height": 28,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "9t0z5",
+                  "name": "nav",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "e4rDZ",
+                      "name": "docsLink",
+                      "fill": "$text-primary",
+                      "content": "Docs",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5Yppm",
+                      "name": "blogLink",
+                      "fill": "$text-primary",
+                      "content": "Blog",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HtgcZ",
+              "name": "searchBox",
+              "width": 240,
+              "height": 36,
+              "fill": "$bg-white",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-whisper"
+              },
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "yyCIK",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "Y8dV3",
+                  "name": "searchText",
+                  "fill": "$text-muted",
+                  "content": "Search docs...",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EQFmC",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$bg-white",
+          "children": [
+            {
+              "type": "frame",
+              "id": "efq1j",
+              "name": "Sidebar - Doc List",
+              "width": 260,
+              "height": "fill_container",
+              "fill": "$bg-warm-white",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border-whisper"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                20,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2aJ73",
+                  "name": "sectionTitle",
+                  "fill": "$text-primary",
+                  "content": "Documents",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "8hDrd",
+                  "name": "spacer1",
+                  "width": "fill_container",
+                  "height": 8,
+                  "layout": "none"
+                },
+                {
+                  "type": "frame",
+                  "id": "U8g3k",
+                  "name": "row1",
+                  "width": "fill_container",
+                  "fill": "$badge-blue-bg",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "GmuZr",
+                      "name": "icon1",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$accent-blue"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bHyw5",
+                      "name": "text1",
+                      "fill": "$accent-blue",
+                      "content": "Claude Code 시작하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zD2dx",
+                  "name": "row2",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "V9ien",
+                      "name": "icon2",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CVzt3",
+                      "name": "text2",
+                      "fill": "$text-secondary",
+                      "content": "MCP 서버 설정",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "prEDd",
+                  "name": "row3",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "2jKgq",
+                      "name": "icon3",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "L0X6l",
+                      "name": "text3",
+                      "fill": "$text-secondary",
+                      "content": "멀티 에이전트 활용법",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HYw7X",
+                  "name": "row4",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "KE3gf",
+                      "name": "icon4",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "1nzfb",
+                      "name": "text4",
+                      "fill": "$text-secondary",
+                      "content": "프롬프트 엔지니어링 팁",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XUS7k",
+                  "name": "row5",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "hOj0N",
+                      "name": "icon5",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "60kEa",
+                      "name": "text5",
+                      "fill": "$text-secondary",
+                      "content": "Claude Code 단축키 모음",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nr5mr",
+                  "name": "row6",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "SfIWO",
+                      "name": "icon6",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oLCSZ",
+                      "name": "text6",
+                      "fill": "$text-secondary",
+                      "content": "자동화 워크플로우",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fWe5W",
+                  "name": "row7",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "zJy5s",
+                      "name": "icon7",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "6N2JO",
+                      "name": "text7",
+                      "fill": "$text-secondary",
+                      "content": "Git 연동 가이드",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sFtko",
+                  "name": "row8",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "8Li4G",
+                      "name": "icon8",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "file-text",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EoOdN",
+                      "name": "text8",
+                      "fill": "$text-secondary",
+                      "content": "트러블슈팅 FAQ",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xtFwK",
+              "name": "Content Area",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                32,
+                48
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0XQ5O",
+                  "name": "breadcrumb",
+                  "fill": "$text-muted",
+                  "content": "Docs > Claude Code > 시작하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "d3QvX",
+                  "name": "title",
+                  "fill": "$text-primary",
+                  "content": "Claude Code 시작하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "gQjQW",
+                  "name": "badgeRow",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "iSvJs",
+                      "name": "badge",
+                      "fill": "$badge-blue-bg",
+                      "cornerRadius": 12,
+                      "padding": [
+                        4,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MYjRi",
+                          "name": "badgeText",
+                          "fill": "$badge-blue-text",
+                          "content": "Getting Started",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "wkOSg",
+                  "name": "divider",
+                  "fill": "$border-whisper",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "C2bcP",
+                  "name": "h2_1",
+                  "fill": "$text-primary",
+                  "content": "설치 방법",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "FRipH",
+                  "name": "p1",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Claude Code는 npm을 통해 간편하게 설치할 수 있습니다. 터미널에서 아래 명령어를 실행하면 전역으로 설치되며, 이후 어떤 디렉토리에서든 claude 명령어를 사용할 수 있습니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "mFsHp",
+                  "name": "codeBlock",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "k07gX",
+                      "name": "codeText",
+                      "fill": "$text-primary",
+                      "content": "npm install -g @anthropic-ai/claude-code",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "dqKHT",
+                  "name": "h2_2",
+                  "fill": "$text-primary",
+                  "content": "CLI 기본 명령어",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "YakgQ",
+                  "name": "p2",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Claude Code의 핵심 명령어를 알아봅시다. claude 명령어로 대화형 세션을 시작하고, claude commit으로 자동 커밋 메시지를 생성할 수 있습니다. 또한 claude review를 통해 코드 리뷰를 받을 수도 있습니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "pGC1Z",
+                  "name": "codeBlock2",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o7NPj",
+                      "name": "codeLine1",
+                      "fill": "$text-primary",
+                      "content": "claude          # 대화형 세션 시작",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZPxZX",
+                      "name": "codeLine2",
+                      "fill": "$text-primary",
+                      "content": "claude commit   # 커밋 메시지 자동 생성",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UoNWS",
+                      "name": "codeLine3",
+                      "fill": "$text-primary",
+                      "content": "claude review   # 코드 리뷰 요청",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "eMsH1",
+                  "name": "h2_3",
+                  "fill": "$text-primary",
+                  "content": "프로젝트 설정",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "n5zol",
+                  "name": "p3",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "프로젝트 루트에 CLAUDE.md 파일을 생성하면 Claude Code에게 프로젝트의 컨텍스트를 전달할 수 있습니다. 기술 스택, 코드 컨벤션, 디렉토리 구조 등을 명시하면 더 정확한 코드를 생성합니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "Op9aM",
+                  "name": "codeBlock3",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KtJjK",
+                      "name": "codeLine4",
+                      "fill": "$text-muted",
+                      "content": "# CLAUDE.md",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wFmcK",
+                      "name": "codeLine5",
+                      "fill": "$text-primary",
+                      "content": "기술 스택: TypeScript, React, Tailwind",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0mZva",
+                      "name": "codeLine6",
+                      "fill": "$text-primary",
+                      "content": "패키지 매니저: Bun",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fF3so",
+              "name": "Table of Contents",
+              "width": 200,
+              "height": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "left": 1
+                },
+                "fill": "$border-whisper"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                32,
+                20
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qY8Cc",
+                  "name": "tocLabel",
+                  "fill": "$text-muted",
+                  "content": "On this page",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "8oNUM",
+                  "name": "tocList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0LSwn",
+                      "name": "tocItem1",
+                      "fill": "$accent-blue",
+                      "content": "설치 방법",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "24s7z",
+                      "name": "tocItem2",
+                      "fill": "$text-secondary",
+                      "content": "CLI 기본 명령어",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ua5w2",
+                      "name": "tocItem3",
+                      "fill": "$text-secondary",
+                      "content": "프로젝트 설정",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LoRot",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "$bg-warm-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "1jbQK",
+              "name": "leftGroup",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "qk70k",
+                  "name": "logoBox",
+                  "width": 20,
+                  "height": 20,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "hzZ6M",
+                  "name": "brandText",
+                  "fill": "$text-primary",
+                  "content": "Claude Wiki",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "NyuN2",
+                  "name": "copyText",
+                  "fill": "$text-muted",
+                  "content": "© 2026 Woowacourse Claude Code 원정대",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "43Xed",
+              "name": "rightGroup",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ug42e",
+                  "name": "link1",
+                  "fill": "$text-secondary",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "8S2Lx",
+                  "name": "link2",
+                  "fill": "$text-secondary",
+                  "content": "Blog",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "9CE0q",
+                  "name": "link3",
+                  "fill": "$text-secondary",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Qu5vc",
+      "x": 0,
+      "y": 1000,
+      "name": "Blog Detail page",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "G7p01",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$bg-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "gap": 24,
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "J7yXF",
+              "name": "leftGroup",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 6,
+                  "id": "ZaJ26",
+                  "name": "logo",
+                  "width": 28,
+                  "height": 28,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "uzkDq",
+                  "name": "nav",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "apvO0",
+                      "name": "docsLink",
+                      "fill": "$text-primary",
+                      "content": "Docs",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OnFgb",
+                      "name": "blogLink",
+                      "fill": "$text-primary",
+                      "content": "Blog",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dQLYb",
+              "name": "searchBox",
+              "width": 240,
+              "height": 36,
+              "fill": "$bg-white",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-whisper"
+              },
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "dhSKu",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "qqlXu",
+                  "name": "searchText",
+                  "fill": "$text-muted",
+                  "content": "Search docs...",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HGBtl",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$bg-white",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mWtfm",
+              "name": "Content Area",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                32,
+                300
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AuSqP",
+                  "name": "breadcrumb",
+                  "fill": "$text-muted",
+                  "content": "Docs > Claude Code > 시작하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "faryd",
+                  "name": "title",
+                  "fill": "$text-primary",
+                  "content": "Claude Code 시작하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "JtUJ8",
+                  "name": "badgeRow",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XCF2b",
+                      "name": "badge",
+                      "fill": "$badge-blue-bg",
+                      "cornerRadius": 12,
+                      "padding": [
+                        4,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RbZGl",
+                          "name": "badgeText",
+                          "fill": "$badge-blue-text",
+                          "content": "Getting Started",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "1gSt7",
+                  "name": "divider",
+                  "fill": "$border-whisper",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "B4Q7W",
+                  "name": "h2_1",
+                  "fill": "$text-primary",
+                  "content": "설치 방법",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "nmj2R",
+                  "name": "p1",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Claude Code는 npm을 통해 간편하게 설치할 수 있습니다. 터미널에서 아래 명령어를 실행하면 전역으로 설치되며, 이후 어떤 디렉토리에서든 claude 명령어를 사용할 수 있습니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "OuTWj",
+                  "name": "codeBlock",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kV2h6",
+                      "name": "codeText",
+                      "fill": "$text-primary",
+                      "content": "npm install -g @anthropic-ai/claude-code",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "NkXDb",
+                  "name": "h2_2",
+                  "fill": "$text-primary",
+                  "content": "CLI 기본 명령어",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "ipzKy",
+                  "name": "p2",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Claude Code의 핵심 명령어를 알아봅시다. claude 명령어로 대화형 세션을 시작하고, claude commit으로 자동 커밋 메시지를 생성할 수 있습니다. 또한 claude review를 통해 코드 리뷰를 받을 수도 있습니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "9M2Ne",
+                  "name": "codeBlock2",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wNn6g",
+                      "name": "codeLine1",
+                      "fill": "$text-primary",
+                      "content": "claude          # 대화형 세션 시작",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UGPQZ",
+                      "name": "codeLine2",
+                      "fill": "$text-primary",
+                      "content": "claude commit   # 커밋 메시지 자동 생성",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ctLID",
+                      "name": "codeLine3",
+                      "fill": "$text-primary",
+                      "content": "claude review   # 코드 리뷰 요청",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "b1I61",
+                  "name": "h2_3",
+                  "fill": "$text-primary",
+                  "content": "프로젝트 설정",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "MMrOd",
+                  "name": "p3",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "프로젝트 루트에 CLAUDE.md 파일을 생성하면 Claude Code에게 프로젝트의 컨텍스트를 전달할 수 있습니다. 기술 스택, 코드 컨벤션, 디렉토리 구조 등을 명시하면 더 정확한 코드를 생성합니다.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "R36ec",
+                  "name": "codeBlock3",
+                  "width": "fill_container",
+                  "fill": "$bg-warm-white",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XNk1c",
+                      "name": "codeLine4",
+                      "fill": "$text-muted",
+                      "content": "# CLAUDE.md",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JPc5c",
+                      "name": "codeLine5",
+                      "fill": "$text-primary",
+                      "content": "기술 스택: TypeScript, React, Tailwind",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "g8Pb6",
+                      "name": "codeLine6",
+                      "fill": "$text-primary",
+                      "content": "패키지 매니저: Bun",
+                      "fontFamily": "Courier New",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v18zY",
+              "name": "Table of Contents",
+              "width": 200,
+              "height": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "left": 1
+                },
+                "fill": "$border-whisper"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                32,
+                20
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LRjEl",
+                  "name": "tocLabel",
+                  "fill": "$text-muted",
+                  "content": "On this page",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "qZhco",
+                  "name": "tocList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AxBNg",
+                      "name": "tocItem1",
+                      "fill": "$accent-blue",
+                      "content": "설치 방법",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wKxFU",
+                      "name": "tocItem2",
+                      "fill": "$text-secondary",
+                      "content": "CLI 기본 명령어",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "x0oei",
+                      "name": "tocItem3",
+                      "fill": "$text-secondary",
+                      "content": "프로젝트 설정",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ultYz",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "$bg-warm-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "j6zNH",
+              "name": "leftGroup",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "00HkR",
+                  "name": "logoBox",
+                  "width": 20,
+                  "height": 20,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "zgpZK",
+                  "name": "brandText",
+                  "fill": "$text-primary",
+                  "content": "Claude Wiki",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "3m0Iq",
+                  "name": "copyText",
+                  "fill": "$text-muted",
+                  "content": "© 2026 Woowacourse Claude Code 원정대",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bp6ls",
+              "name": "rightGroup",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wAjHt",
+                  "name": "link1",
+                  "fill": "$text-secondary",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Ct1FC",
+                  "name": "link2",
+                  "fill": "$text-secondary",
+                  "content": "Blog",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "OEiIi",
+                  "name": "link3",
+                  "fill": "$text-secondary",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Ed5Lt",
+      "x": 0,
+      "y": 2000,
+      "name": "Blog Page",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "zezIG",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$bg-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "gap": 24,
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "b0dyy",
+              "name": "leftGroup",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 6,
+                  "id": "dGWTw",
+                  "name": "logo",
+                  "width": 28,
+                  "height": 28,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "gO2HQ",
+                  "name": "nav",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DAjVX",
+                      "name": "docsLink",
+                      "fill": "$text-primary",
+                      "content": "Docs",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "3z5o4",
+                      "name": "blogLink",
+                      "fill": "$text-primary",
+                      "content": "Blog",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "z7MWL",
+              "name": "searchBox",
+              "width": 240,
+              "height": 36,
+              "fill": "$bg-white",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-whisper"
+              },
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "1L219",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "bvp0h",
+                  "name": "searchText",
+                  "fill": "$text-muted",
+                  "content": "Search docs...",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5Ts0P",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$bg-white",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mtKl1",
+              "name": "Blog Content",
+              "width": 640,
+              "layout": "vertical",
+              "gap": 28,
+              "padding": [
+                32,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "x4ztt",
+                  "name": "Chip Filter Section",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "t2VkH",
+                      "name": "headerGroup",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IP9nG",
+                          "name": "title",
+                          "fill": "$text-primary",
+                          "content": "블로그",
+                          "fontFamily": "Inter",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Ip9Sp",
+                          "name": "subtitle",
+                          "fill": "$text-secondary",
+                          "content": "클로드 코드 원정대의 인사이트와 경험을 공유합니다",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "av5Tv",
+                      "name": "chipRow",
+                      "width": "fill_container",
+                      "height": 70,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Lztvu",
+                          "x": 0,
+                          "y": 0,
+                          "name": "chip1",
+                          "fill": "$accent-blue",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "YA9XY",
+                              "name": "chip1Text",
+                              "fill": "#FFFFFFFF",
+                              "content": "전체",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "O6tQO",
+                          "x": 60,
+                          "y": 0,
+                          "name": "chip7",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "QxTUW",
+                              "name": "chip7Text",
+                              "fill": "$text-secondary",
+                              "content": "페어 프로그래밍",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ztAvM",
+                          "x": 184,
+                          "y": 0,
+                          "name": "chip2",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "SxEvw",
+                              "name": "chip2Text",
+                              "fill": "$text-secondary",
+                              "content": "Claude Code",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "8Lrpg",
+                          "x": 301,
+                          "y": 0,
+                          "name": "chip3",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "olbco",
+                              "name": "chip3Text",
+                              "fill": "$text-secondary",
+                              "content": "프롬프트 엔지니어링",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "KPvel",
+                          "x": 449,
+                          "y": 0,
+                          "name": "chip4",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "a0SK8",
+                              "name": "chip4Text",
+                              "fill": "$text-secondary",
+                              "content": "코드 리뷰",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "CFl1X",
+                          "x": 537,
+                          "y": 0,
+                          "name": "chip5",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qO7nF",
+                              "name": "chip5Text",
+                              "fill": "$text-secondary",
+                              "content": "자동화",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9yF9j",
+                          "x": 0,
+                          "y": 39,
+                          "name": "chip6",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "5Joez",
+                              "name": "chip6Text",
+                              "fill": "$text-secondary",
+                              "content": "CLAUDE.md",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kHZrc",
+                          "x": 113,
+                          "y": 39,
+                          "name": "chip8",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "TAD9C",
+                              "name": "chip8Text",
+                              "fill": "$text-secondary",
+                              "content": "트러블슈팅",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "nP1GS",
+                      "name": "divider",
+                      "fill": "$border-whisper",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jAGLL",
+                  "name": "Blog Feed",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "K85MY",
+                      "name": "Card 1",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ufUal",
+                          "name": "thumbnail1",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245743702.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "tQ9KK",
+                          "name": "content1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "YbEkj",
+                              "name": "categoryLabel1",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "IbOwh",
+                              "name": "title1",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Claude Code로 첫 프로젝트 세팅하기",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "2wsQI",
+                              "name": "meta1",
+                              "fill": "$text-muted",
+                              "content": "배기영 · 2026.04.10",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "5Oefz",
+                      "name": "Post 4",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kYYdY",
+                          "name": "thumbnail2",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245758381.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "amQhK",
+                          "name": "content2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "1o559",
+                              "name": "categoryLabel2",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "C5Rkm",
+                              "name": "title2",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "페어 프로그래밍에서 Claude를 파트너로",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "r5hgK",
+                              "name": "meta2",
+                              "fill": "$text-muted",
+                              "content": "박페어 · 2026.04.03",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AZjI9",
+                      "name": "Card 2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "w1Khs",
+                          "name": "thumbnail2",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "afgprogrammer",
+                            "link": "https://unsplash.com/@afgprogrammer",
+                            "author": "Mohammad Rahmani"
+                          },
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245918400.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SGuj5",
+                          "name": "info2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "5LaSv",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600",
+                              "letterSpacing": 0.5
+                            },
+                            {
+                              "type": "text",
+                              "id": "adYTl",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "프롬프트 엔지니어링으로 코드 품질 높이기",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "MqOzi",
+                              "fill": "$text-muted",
+                              "content": "김우테 · 2026.04.08",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0xYGB",
+                      "name": "Card 3",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zPkWZ",
+                          "name": "thumbnail3",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "thisisengineering",
+                            "link": "https://unsplash.com/@thisisengineering",
+                            "author": "ThisisEngineering"
+                          },
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1580983553600-c49a1d083f54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzYyNDU4Mzl8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "6JfCc",
+                          "name": "info3",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "bLJD1",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600",
+                              "letterSpacing": 0.5
+                            },
+                            {
+                              "type": "text",
+                              "id": "GkhAj",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "자동 코드 리뷰, 실무에서 써보니",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "CTDbl",
+                              "fill": "$text-muted",
+                              "content": "이코드 · 2026.04.05",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "oUxbO",
+                      "name": "Post 5",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "0hv2j",
+                          "name": "thumbnail5",
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245711234.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "7cFMY",
+                          "name": "label5",
+                          "fill": "$accent-blue",
+                          "content": "blog",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "MvWXh",
+                          "name": "title5",
+                          "fill": "$text-primary",
+                          "content": "트러블슈팅 워크플로우 자동화 경험기",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "F1Gkq",
+                          "name": "meta5",
+                          "fill": "$text-muted",
+                          "content": "최디버그 · 2026.03.29",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dWrqy",
+                      "name": "Post 6",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "JDKCr",
+                          "name": "thumbnail6",
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245736135.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "bPZ6z",
+                          "name": "label6",
+                          "fill": "$accent-blue",
+                          "content": "blog",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "41kJR",
+                          "name": "title6",
+                          "fill": "$text-primary",
+                          "content": "CLAUDE.md 작성법 완벽 가이드",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "N3iG5",
+                          "name": "meta6",
+                          "fill": "$text-muted",
+                          "content": "정클린 · 2026.03.25",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VdFRf",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "$bg-warm-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "XkYfa",
+              "name": "leftGroup",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "TlLq8",
+                  "name": "logoBox",
+                  "width": 20,
+                  "height": 20,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "uE0NU",
+                  "name": "brandText",
+                  "fill": "$text-primary",
+                  "content": "Claude Wiki",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "N2Awv",
+                  "name": "copyText",
+                  "fill": "$text-muted",
+                  "content": "© 2026 Woowacourse Claude Code 원정대",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Mj39p",
+              "name": "rightGroup",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AZbTn",
+                  "name": "link1",
+                  "fill": "$text-secondary",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "OOXYP",
+                  "name": "link2",
+                  "fill": "$text-secondary",
+                  "content": "Blog",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "jMYh6",
+                  "name": "link3",
+                  "fill": "$text-secondary",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "3T3tQ",
+      "x": 0,
+      "y": 2000,
+      "name": "Blog Page",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "jBy99",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$bg-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "gap": 24,
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "0vByZ",
+              "name": "leftGroup",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 6,
+                  "id": "jH6O9",
+                  "name": "logo",
+                  "width": 28,
+                  "height": 28,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "MX6hY",
+                  "name": "nav",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yqEQb",
+                      "name": "docsLink",
+                      "fill": "$text-primary",
+                      "content": "Docs",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "deQDd",
+                      "name": "blogLink",
+                      "fill": "$text-primary",
+                      "content": "Blog",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AMogy",
+              "name": "searchBox",
+              "width": 240,
+              "height": 36,
+              "fill": "$bg-white",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-whisper"
+              },
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "V7iUQ",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "dRMsj",
+                  "name": "searchText",
+                  "fill": "$text-muted",
+                  "content": "Search docs...",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6FRWe",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$bg-white",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ngcbD",
+              "name": "Blog Content",
+              "width": 640,
+              "layout": "vertical",
+              "gap": 28,
+              "padding": [
+                32,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZckLS",
+                  "name": "Chip Filter Section",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "7mtVg",
+                      "name": "headerGroup",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "JbMA2",
+                          "name": "title",
+                          "fill": "$text-primary",
+                          "content": "블로그",
+                          "fontFamily": "Inter",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mYv1k",
+                          "name": "subtitle",
+                          "fill": "$text-secondary",
+                          "content": "클로드 코드 원정대의 인사이트와 경험을 공유합니다",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SzkfX",
+                      "name": "chipRow",
+                      "width": "fill_container",
+                      "height": 70,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "UsB8B",
+                          "x": 0,
+                          "y": 0,
+                          "name": "chip1",
+                          "fill": "$accent-blue",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "340un",
+                              "name": "chip1Text",
+                              "fill": "#FFFFFFFF",
+                              "content": "전체",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "v3egx",
+                          "x": 60,
+                          "y": 0,
+                          "name": "chip7",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "MwqN5",
+                              "name": "chip7Text",
+                              "fill": "$text-secondary",
+                              "content": "페어 프로그래밍",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "0LPVi",
+                          "x": 184,
+                          "y": 0,
+                          "name": "chip2",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Jhk6u",
+                              "name": "chip2Text",
+                              "fill": "$text-secondary",
+                              "content": "Claude Code",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "g5MLL",
+                          "x": 301,
+                          "y": 0,
+                          "name": "chip3",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OBvYM",
+                              "name": "chip3Text",
+                              "fill": "$text-secondary",
+                              "content": "프롬프트 엔지니어링",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "WyBih",
+                          "x": 449,
+                          "y": 0,
+                          "name": "chip4",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Etfln",
+                              "name": "chip4Text",
+                              "fill": "$text-secondary",
+                              "content": "코드 리뷰",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "bsdw1",
+                          "x": 537,
+                          "y": 0,
+                          "name": "chip5",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "mgefT",
+                              "name": "chip5Text",
+                              "fill": "$text-secondary",
+                              "content": "자동화",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SkUQh",
+                          "x": 0,
+                          "y": 39,
+                          "name": "chip6",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "SKdtd",
+                              "name": "chip6Text",
+                              "fill": "$text-secondary",
+                              "content": "CLAUDE.md",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DYsUt",
+                          "x": 113,
+                          "y": 39,
+                          "name": "chip8",
+                          "fill": "$bg-warm-white",
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$border-whisper"
+                          },
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UQSW8",
+                              "name": "chip8Text",
+                              "fill": "$text-secondary",
+                              "content": "트러블슈팅",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "Hcval",
+                      "name": "divider",
+                      "fill": "$border-whisper",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kJc6J",
+                  "name": "Blog Feed",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EO2II",
+                      "name": "Card 1",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "CCiIY",
+                          "name": "thumbnail1",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245743702.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Hhk8O",
+                          "name": "content1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XS14a",
+                              "name": "categoryLabel1",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "tdpFX",
+                              "name": "title1",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Claude Code로 첫 프로젝트 세팅하기",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ixAwy",
+                              "name": "meta1",
+                              "fill": "$text-muted",
+                              "content": "배기영 · 2026.04.10",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "w2X7Q",
+                      "name": "Post 4",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "8vPHP",
+                          "name": "thumbnail2",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245758381.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "eG4Gr",
+                          "name": "content2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "MGjpR",
+                              "name": "categoryLabel2",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "XASvQ",
+                              "name": "title2",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "페어 프로그래밍에서 Claude를 파트너로",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "g7d5M",
+                              "name": "meta2",
+                              "fill": "$text-muted",
+                              "content": "박페어 · 2026.04.03",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ra4UA",
+                      "name": "Card 2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "6u0yJ",
+                          "name": "thumbnail2",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "afgprogrammer",
+                            "link": "https://unsplash.com/@afgprogrammer",
+                            "author": "Mohammad Rahmani"
+                          },
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245918400.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "pASEV",
+                          "name": "info2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "yYoml",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600",
+                              "letterSpacing": 0.5
+                            },
+                            {
+                              "type": "text",
+                              "id": "Od1C4",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "프롬프트 엔지니어링으로 코드 품질 높이기",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "zzMWw",
+                              "fill": "$text-muted",
+                              "content": "김우테 · 2026.04.08",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7jw1Y",
+                      "name": "Card 3",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        0,
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "6uyum",
+                          "name": "thumbnail3",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "thisisengineering",
+                            "link": "https://unsplash.com/@thisisengineering",
+                            "author": "ThisisEngineering"
+                          },
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1580983553600-c49a1d083f54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzYyNDU4Mzl8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mh0x5",
+                          "name": "info3",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            0,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "rRfKA",
+                              "fill": "$accent-blue",
+                              "content": "blog",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600",
+                              "letterSpacing": 0.5
+                            },
+                            {
+                              "type": "text",
+                              "id": "0mRMw",
+                              "fill": "$text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "자동 코드 리뷰, 실무에서 써보니",
+                              "fontFamily": "Inter",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "00yMm",
+                              "fill": "$text-muted",
+                              "content": "이코드 · 2026.04.05",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Il0Y9",
+                      "name": "Post 5",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Mm2c1",
+                          "name": "thumbnail5",
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245711234.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "uSbiy",
+                          "name": "label5",
+                          "fill": "$accent-blue",
+                          "content": "blog",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "z0TIR",
+                          "name": "title5",
+                          "fill": "$text-primary",
+                          "content": "트러블슈팅 워크플로우 자동화 경험기",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "umGSK",
+                          "name": "meta5",
+                          "fill": "$text-muted",
+                          "content": "최디버그 · 2026.03.29",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P0uIY",
+                      "name": "Post 6",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "9FudH",
+                          "name": "thumbnail6",
+                          "width": "fill_container",
+                          "height": 180,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./images/generated-1776245736135.png",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "oU4wT",
+                          "name": "label6",
+                          "fill": "$accent-blue",
+                          "content": "blog",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "wVHZx",
+                          "name": "title6",
+                          "fill": "$text-primary",
+                          "content": "CLAUDE.md 작성법 완벽 가이드",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XEQT7",
+                          "name": "meta6",
+                          "fill": "$text-muted",
+                          "content": "정클린 · 2026.03.25",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bie0y",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "$bg-warm-white",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-whisper"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "B4jKr",
+              "name": "leftGroup",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "XpYnk",
+                  "name": "logoBox",
+                  "width": 20,
+                  "height": 20,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border-whisper"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "R6GlZ",
+                  "name": "brandText",
+                  "fill": "$text-primary",
+                  "content": "Claude Wiki",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "8OhJF",
+                  "name": "copyText",
+                  "fill": "$text-muted",
+                  "content": "© 2026 Woowacourse Claude Code 원정대",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u9sWE",
+              "name": "rightGroup",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gQ42T",
+                  "name": "link1",
+                  "fill": "$text-secondary",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "euBSI",
+                  "name": "link2",
+                  "fill": "$text-secondary",
+                  "content": "Blog",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "exERL",
+                  "name": "link3",
+                  "fill": "$text-secondary",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "accent-blue": {
+      "type": "color",
+      "value": "#0075DEFF"
+    },
+    "badge-blue-bg": {
+      "type": "color",
+      "value": "#F2F9FFFF"
+    },
+    "badge-blue-text": {
+      "type": "color",
+      "value": "#097FE8FF"
+    },
+    "bg-warm-dark": {
+      "type": "color",
+      "value": "#31302EFF"
+    },
+    "bg-warm-white": {
+      "type": "color",
+      "value": "#F6F5F4FF"
+    },
+    "bg-white": {
+      "type": "color",
+      "value": "#FFFFFFFF"
+    },
+    "border-whisper": {
+      "type": "color",
+      "value": "#0000001A"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#A39E98FF"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#000000F2"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#615D59FF"
+    }
+  }
+}
