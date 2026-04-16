@@ -66,7 +66,7 @@ allowed-tools:
 <본문 - 필요시에만 작성>
 ```
 
-- **type**: `feat`, `fix`, `refactor`, `style`, `docs`, `test`, `chore` 중 적절한 것을 선택
+- **type**: `feat`, `fix`, `refactor`, `style`, `docs`, `setting`, `chore` 중 적절한 것을 선택
 - **제목**: 50자 이내, 명령형 어조, 한글로 작성
 - **본문**: 변경 이유 및 맥락이 필요한 경우에만 작성하며, 각 줄은 72자 이내로 작성
 
