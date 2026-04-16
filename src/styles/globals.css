@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Global CSS — Design System (design.md 기반)
+   ========================================================================== */
+
+@import 'tailwindcss';
+@import './fonts.css';
+
+/* --------------------------------------------------------------------------
+   Tailwind v4 Theme
+   @theme 블록에 등록된 값은 Tailwind 유틸리티로 바로 사용 가능
+   예) text-primary, bg-accent, shadow-card, rounded-pill, font-sans
+   -------------------------------------------------------------------------- */
+@theme {
+  /* --- Colors --- */
+  --color-primary: rgba(0, 0, 0, 0.95);
+  --color-bg: #ffffff;
+  --color-bg-warm: #f6f5f4;
+  --color-surface-dark: #31302e;
+
+  --color-accent: #0075de;
+  --color-accent-active: #005bab;
+  --color-brand-deep-navy: #213183;
+
+  --color-text-secondary: #615d59;
+  --color-text-muted: #a39e98;
+
+  --color-link: #0075de;
+  --color-link-light: #62aef0;
+  --color-focus: #097fe8;
+  --color-badge-bg: #f2f9ff;
+  --color-badge-text: #097fe8;
+
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  /* Semantic */
+  --color-semantic-teal: #2a9d99;
+  --color-semantic-green: #1aae39;
+  --color-semantic-orange: #dd5b00;
+  --color-semantic-pink: #ff64c8;
+  --color-semantic-purple: #391c57;
+  --color-semantic-brown: #523410;
+
+  /* --- Font Family --- */
+  --font-sans:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+  /* --- Border Radius --- */
+  --radius-micro: 0.25rem;
+  --radius-subtle: 0.3125rem;
+  --radius-standard: 0.5rem;
+  --radius-comfortable: 0.75rem;
+  --radius-large: 1rem;
+  --radius-pill: 9999px;
+  --radius-circle: 100%;
+
+  /* --- Shadows --- */
+  --shadow-card:
+    rgba(0, 0, 0, 0.04) 0px 4px 18px, rgba(0, 0, 0, 0.027) 0px 2.025px 7.84688px,
+    rgba(0, 0, 0, 0.02) 0px 0.8px 2.925px, rgba(0, 0, 0, 0.01) 0px 0.175px 1.04062px;
+  --shadow-deep:
+    rgba(0, 0, 0, 0.01) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 3px 7px,
+    rgba(0, 0, 0, 0.02) 0px 7px 15px, rgba(0, 0, 0, 0.04) 0px 14px 28px,
+    rgba(0, 0, 0, 0.05) 0px 23px 52px;
+
+  /* --- Spacing (section-level) --- */
+  --spacing-section: 4rem;
+  --spacing-section-lg: 7.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   CSS Variables (Tailwind 유틸리티가 아닌 일반 CSS 변수)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Typography — Font Size */
+  --font-size-display-hero: 4rem;
+  --font-size-display-secondary: 3.375rem;
+  --font-size-heading-section: 3rem;
+  --font-size-subheading-large: 2.5rem;
+  --font-size-subheading: 1.625rem;
+  --font-size-card-title: 1.375rem;
+  --font-size-body-large: 1.25rem;
+  --font-size-body: 1rem;
+  --font-size-nav: 0.9375rem;
+  --font-size-caption: 0.875rem;
+  --font-size-badge: 0.75rem;
+
+  /* Typography — Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Typography — Letter Spacing */
+  --letter-spacing-display-hero: -2.125px;
+  --letter-spacing-display-secondary: -1.875px;
+  --letter-spacing-heading-section: -1.5px;
+  --letter-spacing-subheading: -0.625px;
+  --letter-spacing-card-title: -0.25px;
+  --letter-spacing-body-large: -0.125px;
+  --letter-spacing-badge: 0.125px;
+
+  /* Layout */
+  --max-content-width: 75rem;
+
+  /* Border */
+  --border-whisper: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Base Reset & Global Styles
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; /* 1rem = 16px */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
