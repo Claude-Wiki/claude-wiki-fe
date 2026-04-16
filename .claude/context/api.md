@@ -28,6 +28,24 @@ Firebase Firestore를 직접 사용하는 클라이언트 SDK 기반 API.
 slug 유일성 보장용. `{ postId: string }` 구조.
 `posts` 문서와 transaction으로 함께 생성/삭제.
 
+### `posts/{postId}/history` (서브컬렉션)
+
+어드민이 포스트를 수정할 때마다 **수정 직전 상태**를 스냅샷으로 저장.
+어드민 대시보드에서만 조회 가능 (유저에게 노출 안 함).
+
+| 필드 | 타입 | 설명 |
+|------|------|------|
+| `id` | `string` | Firestore 문서 ID (자동 생성) |
+| `title` | `string` | 수정 전 제목 스냅샷 |
+| `content` | `string` | 수정 전 본문 스냅샷 |
+| `slug` | `string` | 수정 전 slug 스냅샷 |
+| `category` | `string` | 수정 전 카테고리 스냅샷 |
+| `tags` | `string[]` | 수정 전 태그 스냅샷 |
+| `author` | `PostAuthor` | 원본 작성자 |
+| `published` | `boolean` | 수정 전 발행 상태 |
+| `editedBy` | `PostAuthor` | 이 편집을 수행한 어드민 |
+| `editedAt` | `Timestamp` | 편집 시각 |
+
 ---
 
 ## 타입 정의
