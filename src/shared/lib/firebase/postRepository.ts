@@ -4,7 +4,7 @@ import {
   getDoc,
   getDocs,
   updateDoc,
-  writeBatch,
+  deleteDoc,
   runTransaction,
   serverTimestamp,
   query,
@@ -16,27 +16,25 @@ import {
   type FirestoreDataConverter,
   type QueryDocumentSnapshot,
 } from 'firebase/firestore';
-
-// 도메인 모델이 Firestore SDK를 직접 참조하지 않도록 re-export
-export type { DocumentSnapshot as PostCursor };
 import { db } from './client';
 import type {
   Post,
+  PostType,
   PostSummary,
-  PostAuthor,
-  PostHistory,
-  PostHistorySummary,
   PostCreateInput,
   PostUpdateInput,
 } from '@/shared/types/post.types';
 
-// withConverter로 Firestore ↔ Post 변환 — 타입 단언 없이 경계 처리
+// 도메인 모델이 Firestore SDK를 직접 참조하지 않도록 re-export
+export type { DocumentSnapshot as PostCursor };
+
 const postConverter: FirestoreDataConverter<Post> = {
   toFirestore: ({ id: _id, ...data }) => data,
   fromFirestore: (snapshot: QueryDocumentSnapshot) => {
     const d = snapshot.data();
     return {
       id: snapshot.id,
+      postType: d['postType'],
       title: d['title'],
       content: d['content'],
       slug: d['slug'],
@@ -50,34 +48,10 @@ const postConverter: FirestoreDataConverter<Post> = {
   },
 };
 
-const historyConverter: FirestoreDataConverter<PostHistory> = {
-  toFirestore: ({ id: _id, ...data }) => data,
-  fromFirestore: (snapshot: QueryDocumentSnapshot) => {
-    const d = snapshot.data();
-    return {
-      id: snapshot.id,
-      title: d['title'],
-      content: d['content'],
-      slug: d['slug'],
-      category: d['category'],
-      tags: d['tags'],
-      author: d['author'],
-      published: d['published'],
-      editedBy: d['editedBy'],
-      editedAt: d['editedAt'],
-    };
-  },
-};
-
 const omitContent = ({ content: _content, ...rest }: Post): PostSummary => rest;
-const omitHistoryContent = ({ content: _content, ...rest }: PostHistory): PostHistorySummary => rest;
 
 const postsCol = () => collection(db, 'posts').withConverter(postConverter);
 const postDoc = (id: string) => doc(db, 'posts', id).withConverter(postConverter);
-const historyCol = (postId: string) =>
-  collection(db, 'posts', postId, 'history').withConverter(historyConverter);
-const historyDoc = (postId: string, historyId: string) =>
-  doc(db, 'posts', postId, 'history', historyId).withConverter(historyConverter);
 
 export const postRepository = {
   async getById(id: string): Promise<Post> {
@@ -95,13 +69,16 @@ export const postRepository = {
     return snap.docs[0].data();
   },
 
+  /** 공개 글 목록 — postType 기준 필터, 최신순, 커서 기반 페이지네이션 */
   async getPublishedList(
+    postType: PostType,
     cursor?: DocumentSnapshot,
     pageSize = 12,
   ): Promise<{ posts: PostSummary[]; nextCursor: DocumentSnapshot | null; hasMore: boolean }> {
     const base = query(
       postsCol(),
       where('published', '==', true),
+      where('postType', '==', postType),
       orderBy('createdAt', 'desc'),
       limit(pageSize),
     );
@@ -114,12 +91,13 @@ export const postRepository = {
     };
   },
 
-  /** 공개 글 전체 — 사이드바 트리용 (카테고리·생성일 오름차순) */
-  async getAllPublished(): Promise<PostSummary[]> {
+  /** 공개 글 전체 — postType 기준 필터, 사이드바 트리용 (카테고리·생성일 오름차순) */
+  async getAllPublished(postType: PostType): Promise<PostSummary[]> {
     const snap = await getDocs(
       query(
         postsCol(),
         where('published', '==', true),
+        where('postType', '==', postType),
         orderBy('category', 'asc'),
         orderBy('createdAt', 'asc'),
       ),
@@ -147,26 +125,13 @@ export const postRepository = {
     return postRef.id;
   },
 
-  async update(id: string, input: PostUpdateInput, editedBy: PostAuthor): Promise<void> {
+  async update(id: string, input: PostUpdateInput): Promise<void> {
     const postRef = postDoc(id);
 
     await runTransaction(db, async tx => {
       const snap = await tx.get(postRef);
       if (!snap.exists()) throw new Error(`post not found: ${id}`);
       const current = snap.data();
-
-      const historyRef = doc(historyCol(id));
-      tx.set(historyRef, {
-        title: current.title,
-        content: current.content,
-        slug: current.slug,
-        category: current.category,
-        tags: current.tags,
-        author: current.author,
-        published: current.published,
-        editedBy,
-        editedAt: serverTimestamp(),
-      });
 
       if (input.slug && input.slug !== current.slug) {
         const newSlugRef = doc(db, 'slugs', input.slug);
@@ -186,30 +151,12 @@ export const postRepository = {
   },
 
   async delete(id: string): Promise<void> {
-    const postRef = postDoc(id);
-    const snap = await getDoc(postRef);
+    const snap = await getDoc(postDoc(id));
     if (!snap.exists()) throw new Error(`post not found: ${id}`);
-
     const { slug } = snap.data();
-    const historySnap = await getDocs(historyCol(id));
-
-    const batch = writeBatch(db);
-    historySnap.docs.forEach(d => batch.delete(d.ref));
-    batch.delete(doc(db, 'slugs', slug));
-    batch.delete(postRef);
-    await batch.commit();
-  },
-
-  async getHistory(postId: string): Promise<PostHistorySummary[]> {
-    const snap = await getDocs(
-      query(historyCol(postId), orderBy('editedAt', 'desc')),
-    );
-    return snap.docs.map(d => omitHistoryContent(d.data()));
-  },
-
-  async getHistoryDetail(postId: string, historyId: string): Promise<PostHistory> {
-    const snap = await getDoc(historyDoc(postId, historyId));
-    if (!snap.exists()) throw new Error(`history not found: ${historyId}`);
-    return snap.data();
+    await Promise.all([
+      deleteDoc(doc(db, 'posts', id)),
+      deleteDoc(doc(db, 'slugs', slug)),
+    ]);
   },
 };
