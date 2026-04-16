@@ -1,3 +1,14 @@
+# Cypress
+cypress/videos
+cypress/screenshots
+cypress/downloads
+
+# Vitest
+.vitest/
+
+# Bun
+bun.lockb
+
 # Logs
 logs
 *.log
