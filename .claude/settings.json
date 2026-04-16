@@ -1,30 +1,44 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/commit-msg-validate.sh"
-          }
-        ]
-      }
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "Edit",
+      "Write(HARNESS-LOG.md)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)"
     ],
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/no-any-check.sh"
-          },
-          {
-            "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/file-naming-check.sh"
-          }
-        ]
-      }
+    "deny": [
+      "Write(.claude/**)",
+      "Write(CLAUDE.md)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git push --force:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(rm:*)",
+      "Bash(bun install:*)"
+    ],
+    "ask": [
+      "Bash(bun:*)",
+      "Bash(node:*)",
+      "Bash(npx:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Write(context/**)"
     ]
+  },
+  "attribution": {
+    "commit": "Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": "Generated with Claude Code"
   }
 }
