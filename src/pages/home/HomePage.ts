@@ -2,12 +2,15 @@ import './HomePage.css';
 
 export class HomePage {
   private root: HTMLElement;
+  private animationIntervals: ReturnType<typeof setInterval>[] = [];
 
   constructor(root: HTMLElement) {
     this.root = root;
   }
 
   render(): void {
+    this.animationIntervals.forEach(clearInterval);
+    this.animationIntervals = [];
     this.root.innerHTML = `
       <div class="landing">
 
@@ -60,16 +63,16 @@ export class HomePage {
               <p class="landing-card-body">문서와 하위 문서를 깊이 있게 정리해도 현재 위치와 구조를 한눈에 파악할 수 있습니다.</p>
               <div class="landing-card-mock">
                 <div class="landing-mock-side-nav">
-                  <span class="landing-mock-nav-item" style="font-weight:500;color:var(--color-text-muted)">워크스페이스</span>
-                  <span class="landing-mock-nav-item" style="font-weight:600;color:var(--color-focus)">제품 문서</span>
-                  <span class="landing-mock-nav-item" style="font-weight:400;color:var(--color-text-secondary)">설치 가이드</span>
-                  <span class="landing-mock-nav-item" style="font-weight:400;color:var(--color-text-secondary)">운영 정책</span>
+                  <span class="landing-mock-nav-item" data-nav-state="muted">워크스페이스</span>
+                  <span class="landing-mock-nav-item" data-nav-state="active">제품 문서</span>
+                  <span class="landing-mock-nav-item" data-nav-state="default">설치 가이드</span>
+                  <span class="landing-mock-nav-item" data-nav-state="default">운영 정책</span>
                 </div>
                 <div class="landing-mock-article">
-                  <span style="font-size:0.6875rem;font-weight:500;color:var(--color-text-muted)">제품 문서 / 설치 가이드</span>
-                  <span style="font-size:1rem;font-weight:600;color:var(--color-primary)">설치 전 체크리스트</span>
+                  <span class="mock-article-breadcrumb" style="font-size:0.6875rem;font-weight:500;color:var(--color-text-muted)">제품 문서 / 설치 가이드</span>
+                  <span class="mock-article-title" style="font-size:1rem;font-weight:600;color:var(--color-primary)">설치 전 체크리스트</span>
                   <hr class="landing-mock-divider" />
-                  <p style="font-size:0.75rem;font-weight:400;color:var(--color-text-secondary);line-height:1.5">권한, 환경 변수, 협업 규칙을 한 번에 정리합니다.</p>
+                  <p class="mock-article-body" style="font-size:0.75rem;font-weight:400;color:var(--color-text-secondary);line-height:1.5">권한, 환경 변수, 협업 규칙을 한 번에 정리합니다.</p>
                 </div>
               </div>
             </div>
@@ -86,9 +89,9 @@ export class HomePage {
                   <hr class="landing-mock-divider" />
                 </div>
                 <div class="landing-mock-toc">
-                  <span style="font-size:0.6875rem;font-weight:400;color:var(--color-text-secondary)">개요</span>
-                  <span style="font-size:0.6875rem;font-weight:600;color:var(--color-focus)">편집 흐름</span>
-                  <span style="font-size:0.6875rem;font-weight:400;color:var(--color-text-secondary)">권한 관리</span>
+                  <span class="mock-toc-item" data-toc-state="default">개요</span>
+                  <span class="mock-toc-item" data-toc-state="active">편집 흐름</span>
+                  <span class="mock-toc-item" data-toc-state="default">권한 관리</span>
                 </div>
               </div>
             </div>
@@ -100,14 +103,14 @@ export class HomePage {
               <p class="landing-card-body">제목과 본문을 함께 훑는 검색으로 흩어진 지식도 키워드 하나로 다시 모아볼 수 있습니다.</p>
               <div class="landing-card-mock landing-card-mock--col">
                 <div class="landing-mock-search-bar">
-                  <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-secondary)">'권한 정책' 검색</span>
+                  <span class="mock-search-text" style="font-size:0.75rem;font-weight:400;color:var(--color-text-secondary)">'권한 정책'</span>
                   <span style="font-size:0.75rem;font-weight:600;color:var(--color-focus)">/</span>
                 </div>
                 <div class="landing-mock-results">
-                  <span style="font-size:0.8125rem;font-weight:600;color:var(--color-primary)">권한 정책 업데이트</span>
+                  <span class="mock-result-title" style="font-size:0.8125rem;font-weight:600;color:var(--color-primary)">권한 정책 업데이트</span>
                   <p style="font-size:0.75rem;font-weight:400;color:var(--color-text-secondary);line-height:1.5">역할별 접근 범위와 예외 처리 규칙을 함께 찾았습니다.</p>
                   <hr class="landing-mock-divider" />
-                  <span style="font-size:0.6875rem;font-weight:400;color:var(--color-focus)">운영 정책 / 보안 / 권한</span>
+                  <span class="mock-result-tag" style="font-size:0.6875rem;font-weight:400;color:var(--color-focus)">운영 정책 / 보안 / 권한</span>
                 </div>
               </div>
             </div>
@@ -178,6 +181,7 @@ export class HomePage {
       </div>
     `;
     this.initAnimations();
+    this.initMockAnimations();
   }
 
   private initAnimations(): void {
@@ -196,5 +200,163 @@ export class HomePage {
     this.root.querySelectorAll<HTMLElement>('.fade-in-section').forEach((el) => {
       observer.observe(el);
     });
+  }
+
+  private initMockAnimations(): void {
+    const cards = this.root.querySelectorAll<HTMLElement>('.landing-feature-card');
+
+    const startOnVisible = (el: HTMLElement, cb: () => ReturnType<typeof setInterval>) => {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.animationIntervals.push(cb());
+              obs.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+      obs.observe(el);
+    };
+
+    if (cards[0]) this.initNavAnimation(cards[0], startOnVisible);
+    if (cards[1]) this.initTocAnimation(cards[1], startOnVisible);
+    if (cards[2]) this.initSearchAnimation(cards[2], startOnVisible);
+  }
+
+  private initNavAnimation(
+    card: HTMLElement,
+    startOnVisible: (el: HTMLElement, cb: () => ReturnType<typeof setInterval>) => void,
+  ): void {
+    const navItems = card.querySelectorAll<HTMLElement>('.landing-mock-nav-item');
+    const article = card.querySelector<HTMLElement>('.landing-mock-article');
+    const breadcrumb = card.querySelector<HTMLElement>('.mock-article-breadcrumb');
+    const docTitle = card.querySelector<HTMLElement>('.mock-article-title');
+    const docBody = card.querySelector<HTMLElement>('.mock-article-body');
+
+    if (!navItems.length || !article || !breadcrumb || !docTitle || !docBody) return;
+
+    const navData = [
+      {
+        breadcrumb: '워크스페이스 / 개요',
+        title: '워크스페이스 개요',
+        body: '팀 전체 문서를 한 공간에서 탐색합니다.',
+      },
+      {
+        breadcrumb: '제품 문서 / 설치 가이드',
+        title: '설치 전 체크리스트',
+        body: '권한, 환경 변수, 협업 규칙을 한 번에 정리합니다.',
+      },
+      {
+        breadcrumb: '제품 문서 / 설치 가이드',
+        title: '환경 설정 가이드',
+        body: '단계별 설치 절차와 설정 방법을 안내합니다.',
+      },
+      {
+        breadcrumb: '제품 문서 / 운영 정책',
+        title: '운영 정책 개요',
+        body: '서비스 운영에 필요한 정책과 규정을 정리합니다.',
+      },
+    ];
+
+    let current = 1;
+
+    const activate = (index: number) => {
+      const target = navItems[index];
+      target.classList.add('is-clicking');
+      setTimeout(() => {
+        target.classList.remove('is-clicking');
+        navItems.forEach((item, i) => {
+          item.setAttribute(
+            'data-nav-state',
+            i === index ? 'active' : i === 0 ? 'muted' : 'default',
+          );
+        });
+      }, 180);
+
+      setTimeout(() => {
+        article.classList.add('is-fading');
+        setTimeout(() => {
+          const d = navData[index];
+          breadcrumb.textContent = d.breadcrumb;
+          docTitle.textContent = d.title;
+          docBody.textContent = d.body;
+          article.classList.remove('is-fading');
+        }, 200);
+      }, 100);
+
+      current = index;
+    };
+
+    startOnVisible(card, () => setInterval(() => activate((current + 1) % navItems.length), 2200));
+  }
+
+  private initTocAnimation(
+    card: HTMLElement,
+    startOnVisible: (el: HTMLElement, cb: () => ReturnType<typeof setInterval>) => void,
+  ): void {
+    const tocItems = card.querySelectorAll<HTMLElement>('.mock-toc-item');
+    if (!tocItems.length) return;
+
+    let current = 1;
+
+    const activate = (index: number) => {
+      tocItems[index].classList.add('is-clicking');
+      setTimeout(() => {
+        tocItems[index].classList.remove('is-clicking');
+        tocItems.forEach((item, i) => {
+          item.setAttribute('data-toc-state', i === index ? 'active' : 'default');
+        });
+      }, 180);
+      current = index;
+    };
+
+    startOnVisible(card, () => setInterval(() => activate((current + 1) % tocItems.length), 1800));
+  }
+
+  private initSearchAnimation(
+    card: HTMLElement,
+    startOnVisible: (el: HTMLElement, cb: () => ReturnType<typeof setInterval>) => void,
+  ): void {
+    const searchText = card.querySelector<HTMLElement>('.mock-search-text');
+    const resultTitle = card.querySelector<HTMLElement>('.mock-result-title');
+    const resultTag = card.querySelector<HTMLElement>('.mock-result-tag');
+    const results = card.querySelector<HTMLElement>('.landing-mock-results');
+
+    if (!searchText || !resultTitle || !resultTag || !results) return;
+
+    const searchData = [
+      { query: '권한 정책', title: '권한 정책 업데이트', tag: '운영 정책 / 보안 / 권한' },
+      { query: 'Claude Code', title: 'Claude Code 훅 설정', tag: '개발 / 자동화 / 훅' },
+      { query: '문서 편집', title: '문서 편집 가이드', tag: '가이드 / 에디터 / 마크다운' },
+    ];
+
+    let dataIndex = 0;
+
+    const runCycle = () => {
+      dataIndex = (dataIndex + 1) % searchData.length;
+      const d = searchData[dataIndex];
+
+      searchText.textContent = '';
+      let charIndex = 0;
+      const typeInterval = setInterval(() => {
+        charIndex++;
+        searchText.textContent = `'${d.query.slice(0, charIndex)}'`;
+        if (charIndex >= d.query.length) {
+          clearInterval(typeInterval);
+          setTimeout(() => {
+            results.classList.add('is-fading');
+            setTimeout(() => {
+              resultTitle.textContent = d.title;
+              resultTag.textContent = d.tag;
+              results.classList.remove('is-fading');
+            }, 250);
+          }, 300);
+        }
+      }, 80);
+    };
+
+    startOnVisible(card, () => setInterval(runCycle, 3200));
   }
 }

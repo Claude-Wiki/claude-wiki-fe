@@ -326,6 +326,32 @@
 .landing-mock-nav-item {
   font-family: var(--font-sans);
   font-size: 0.6875rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 0.25rem;
+  cursor: default;
+  transition:
+    color 0.25s ease,
+    background 0.2s ease;
+}
+
+.landing-mock-nav-item[data-nav-state='active'] {
+  font-weight: 600;
+  color: var(--color-focus);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.landing-mock-nav-item[data-nav-state='muted'] {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.landing-mock-nav-item[data-nav-state='default'] {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.landing-mock-nav-item.is-clicking {
+  animation: mock-item-click 0.2s ease;
 }
 
 .landing-mock-article {
@@ -336,6 +362,11 @@
   gap: 0.625rem;
   padding: 0.375rem 0.125rem;
   overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.landing-mock-article.is-fading {
+  opacity: 0;
 }
 
 .landing-mock-toc {
@@ -370,6 +401,51 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: opacity 0.25s ease;
+}
+
+.landing-mock-results.is-fading {
+  opacity: 0;
+}
+
+/* TOC item states */
+.mock-toc-item {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem;
+  cursor: default;
+  transition: color 0.25s ease;
+}
+
+.mock-toc-item[data-toc-state='active'] {
+  font-weight: 600;
+  color: var(--color-focus);
+}
+
+.mock-toc-item[data-toc-state='default'] {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.mock-toc-item.is-clicking {
+  animation: mock-item-click 0.2s ease;
+}
+
+/* Click keyframe */
+@keyframes mock-item-click {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(0.93);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -583,6 +659,15 @@
 
   .landing-features-bottom {
     padding: 6rem 4rem 2rem;
+  }
+
+  .landing-feature-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .landing-feature-block-visual {
+    width: 100%;
   }
 }
 
