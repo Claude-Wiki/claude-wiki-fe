@@ -289,7 +289,7 @@ export class HomePage {
       current = index;
     };
 
-    startOnVisible(card, () => setInterval(() => activate((current + 1) % navItems.length), 2200));
+    startOnVisible(card, () => setInterval(() => activate((current + 1) % navItems.length), 1400));
   }
 
   private initTocAnimation(
@@ -312,7 +312,7 @@ export class HomePage {
       current = index;
     };
 
-    startOnVisible(card, () => setInterval(() => activate((current + 1) % tocItems.length), 1800));
+    startOnVisible(card, () => setInterval(() => activate((current + 1) % tocItems.length), 1200));
   }
 
   private initSearchAnimation(
@@ -357,6 +357,6 @@ export class HomePage {
       }, 80);
     };
 
-    startOnVisible(card, () => setInterval(runCycle, 3200));
+    startOnVisible(card, () => setInterval(runCycle, 2400));
   }
 }
