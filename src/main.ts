@@ -31,7 +31,13 @@ const hideLayout = () => {
 
 const router = new Router(root);
 
+let activeController: { destroy?: () => void } | null = null;
+
 router
+  .beforeEach(() => {
+    activeController?.destroy?.();
+    activeController = null;
+  })
   .register('/', () => {
     hideLayout();
     new HomePage(root).render();
@@ -46,7 +52,9 @@ router
   })
   .register('/blog', () => {
     showLayout();
-    void new BlogListController(new BlogListPage(root)).init();
+    const controller = new BlogListController(new BlogListPage(root));
+    activeController = controller;
+    void controller.init();
   })
   .register('/blog/:slug', ({ slug }) => {
     showLayout();

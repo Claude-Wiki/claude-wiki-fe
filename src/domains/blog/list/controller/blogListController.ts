@@ -10,6 +10,7 @@ export class BlogListController {
   private activeCategory: BlogCategory = '전체';
   private cursor: PostCursor | null = null;
   private isLoading = false;
+  private observer: IntersectionObserver | null = null;
 
   hasMore = true;
 
@@ -22,6 +23,26 @@ export class BlogListController {
     this.attachChipListeners();
     this.attachCardListeners();
     await this.loadPosts();
+    this.initInfiniteScroll();
+  }
+
+  destroy(): void {
+    this.observer?.disconnect();
+    this.observer = null;
+  }
+
+  private initInfiniteScroll(): void {
+    const sentinel = this.page.getSentinel();
+    if (!sentinel) return;
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) void this.loadPosts();
+      },
+      { rootMargin: '200px' },
+    );
+
+    this.observer.observe(sentinel);
   }
 
   private get filtered(): PostSummary[] {
@@ -41,6 +62,10 @@ export class BlogListController {
       this.allPosts = [...this.allPosts, ...result.posts];
       this.cursor = result.nextCursor;
       this.hasMore = result.hasMore;
+
+      if (!this.hasMore) {
+        this.observer?.disconnect();
+      }
 
       this.page.clearPosts();
       if (this.filtered.length === 0) {

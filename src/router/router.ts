@@ -15,6 +15,7 @@ interface Route {
 export class Router {
   private routes: Route[] = [];
   private root: HTMLElement;
+  private beforeEachCallback?: () => void;
 
   /**
    * @param root 라우트 핸들러가 콘텐츠를 렌더링할 루트 DOM 요소
@@ -35,6 +36,11 @@ export class Router {
    * @param handler 경로 매칭 시 실행할 핸들러. 추출된 파라미터를 인자로 받는다.
    * @returns 메서드 체이닝을 위해 인스턴스 자신을 반환
    */
+  beforeEach(cb: () => void): this {
+    this.beforeEachCallback = cb;
+    return this;
+  }
+
   register(path: string, handler: RouteHandler): this {
     const paramNames: string[] = [];
     const pattern = new RegExp(
@@ -65,6 +71,7 @@ export class Router {
    * 매칭되는 라우트가 없으면 404 화면을 렌더링한다.
    */
   resolve(): void {
+    this.beforeEachCallback?.();
     const path = location.pathname;
     for (const route of this.routes) {
       const match = path.match(route.pattern);
