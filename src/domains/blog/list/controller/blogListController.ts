@@ -6,6 +6,7 @@ import type { PostCursor } from '@/shared/lib/firebase/postRepository';
 
 export class BlogListController {
   private page: BlogListPage;
+  private navigate: (path: string) => void;
   private allPosts: PostSummary[] = [];
   private activeCategory: BlogCategory = '전체';
   private cursor: PostCursor | null = null;
@@ -14,8 +15,9 @@ export class BlogListController {
 
   hasMore = true;
 
-  constructor(page: BlogListPage) {
+  constructor(page: BlogListPage, navigate: (path: string) => void) {
     this.page = page;
+    this.navigate = navigate;
   }
 
   async init(): Promise<void> {
@@ -105,7 +107,7 @@ export class BlogListController {
     this.page.getCardList()?.addEventListener('click', (e) => {
       const card = (e.target as HTMLElement).closest<HTMLElement>('.blog-card');
       if (!card?.dataset.slug) return;
-      // Phase 5에서 Router.navigate 연결
+      this.navigate(`/blog/${card.dataset.slug}`);
     });
   }
 

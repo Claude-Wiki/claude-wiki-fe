@@ -52,7 +52,9 @@ router
   })
   .register('/blog', () => {
     showLayout();
-    const controller = new BlogListController(new BlogListPage(root));
+    const controller = new BlogListController(new BlogListPage(root), (path) =>
+      router.navigate(path),
+    );
     activeController = controller;
     void controller.init();
   })
