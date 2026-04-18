@@ -29,7 +29,18 @@ import type {
 export type { DocumentSnapshot as PostCursor };
 
 const postConverter: FirestoreDataConverter<Post> = {
-  toFirestore: ({ id: _id, ...data }) => data,
+  toFirestore: (post) => ({
+    postType: post.postType,
+    title: post.title,
+    content: post.content,
+    slug: post.slug,
+    category: post.category,
+    tags: post.tags,
+    author: post.author,
+    published: post.published,
+    createdAt: post.createdAt,
+    updatedAt: post.updatedAt,
+  }),
   fromFirestore: (snapshot: QueryDocumentSnapshot) => {
     const d = snapshot.data();
     return {
@@ -48,7 +59,18 @@ const postConverter: FirestoreDataConverter<Post> = {
   },
 };
 
-const omitContent = ({ content: _content, ...rest }: Post): PostSummary => rest;
+const omitContent = (post: Post): PostSummary => ({
+  id: post.id,
+  postType: post.postType,
+  title: post.title,
+  slug: post.slug,
+  category: post.category,
+  tags: post.tags,
+  author: post.author,
+  published: post.published,
+  createdAt: post.createdAt,
+  updatedAt: post.updatedAt,
+});
 
 const postsCol = () => collection(db, 'posts').withConverter(postConverter);
 const postDoc = (id: string) => doc(db, 'posts', id).withConverter(postConverter);
@@ -85,8 +107,8 @@ export const postRepository = {
     const q = cursor ? query(base, startAfter(cursor)) : base;
     const snap = await getDocs(q);
     return {
-      posts: snap.docs.map(d => omitContent(d.data())),
-      nextCursor: snap.docs.at(-1) ?? null,
+      posts: snap.docs.map((d) => omitContent(d.data())),
+      nextCursor: snap.docs[snap.docs.length - 1] ?? null,
       hasMore: snap.docs.length === pageSize,
     };
   },
@@ -102,24 +124,29 @@ export const postRepository = {
         orderBy('createdAt', 'asc'),
       ),
     );
-    return snap.docs.map(d => omitContent(d.data()));
+    return snap.docs.map((d) => omitContent(d.data()));
   },
 
   /** 어드민 전용: 초안 포함 전체 */
   async getAll(): Promise<PostSummary[]> {
     const snap = await getDocs(query(postsCol(), orderBy('createdAt', 'desc')));
-    return snap.docs.map(d => omitContent(d.data()));
+    return snap.docs.map((d) => omitContent(d.data()));
   },
 
   async create(input: PostCreateInput): Promise<string> {
     const slugRef = doc(db, 'slugs', input.slug);
     const postRef = doc(postsCol());
 
-    await runTransaction(db, async tx => {
+    await runTransaction(db, async (tx) => {
       const slugSnap = await tx.get(slugRef);
       if (slugSnap.exists()) throw new Error(`slug "${input.slug}" already exists`);
       tx.set(slugRef, { postId: postRef.id });
-      tx.set(postRef, { ...input, createdAt: serverTimestamp(), updatedAt: serverTimestamp() });
+      tx.set(postRef, {
+        id: postRef.id,
+        ...input,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+      });
     });
 
     return postRef.id;
@@ -128,7 +155,7 @@ export const postRepository = {
   async update(id: string, input: PostUpdateInput): Promise<void> {
     const postRef = postDoc(id);
 
-    await runTransaction(db, async tx => {
+    await runTransaction(db, async (tx) => {
       const snap = await tx.get(postRef);
       if (!snap.exists()) throw new Error(`post not found: ${id}`);
       const current = snap.data();
@@ -154,9 +181,6 @@ export const postRepository = {
     const snap = await getDoc(postDoc(id));
     if (!snap.exists()) throw new Error(`post not found: ${id}`);
     const { slug } = snap.data();
-    await Promise.all([
-      deleteDoc(doc(db, 'posts', id)),
-      deleteDoc(doc(db, 'slugs', slug)),
-    ]);
+    await Promise.all([deleteDoc(doc(db, 'posts', id)), deleteDoc(doc(db, 'slugs', slug))]);
   },
 };
