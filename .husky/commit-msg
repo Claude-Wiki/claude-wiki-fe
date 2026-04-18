@@ -4,6 +4,10 @@
 # Type   : feat | fix | docs | style | refactor | setting | chore
 
 commit_msg=$(cat "$1")
+
+# 머지 커밋은 검증 제외
+case "$commit_msg" in Merge*) exit 0 ;; esac
+
 pattern='^(feat|fix|docs|style|refactor|setting|chore)(\([a-z0-9-]+\))?: .+'
 
 if ! echo "$commit_msg" | grep -Eq "$pattern"; then
