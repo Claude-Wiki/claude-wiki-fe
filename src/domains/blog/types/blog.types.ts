@@ -17,6 +17,7 @@ export interface BlogPost {
   title: string;
   slug: string;
   category: string;
+  tags: string[];
   thumbnail?: string;
   author: {
     uid: string;
@@ -26,7 +27,6 @@ export interface BlogPost {
 }
 
 export interface BlogListQuery {
-  category?: Exclude<BlogCategory, '전체'>;
   cursor?: BlogCursor;
   pageSize?: number;
 }

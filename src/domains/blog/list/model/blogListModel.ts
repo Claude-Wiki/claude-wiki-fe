@@ -1,11 +1,6 @@
 import { collection, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase/client';
-import type {
-  BlogCategory,
-  BlogListQuery,
-  BlogListResult,
-  BlogPost,
-} from '@/domains/blog/types/blog.types';
+import type { BlogListQuery, BlogListResult, BlogPost } from '@/domains/blog/types/blog.types';
 
 const PAGE_SIZE = 10;
 
@@ -13,28 +8,17 @@ const toDate = (value: { toDate(): Date } | Date): Date =>
   value instanceof Date ? value : value.toDate();
 
 export const fetchPublishedBlogPosts = async ({
-  category,
   cursor,
   pageSize = PAGE_SIZE,
 }: BlogListQuery = {}): Promise<BlogListResult> => {
-  const baseConditions = [
+  const conditions = [
     where('published', '==', true),
     orderBy('createdAt', 'desc'),
     limit(pageSize),
+    ...(cursor ? [startAfter(cursor)] : []),
   ];
 
-  const categoryCondition =
-    category && category !== ('전체' as BlogCategory) ? [where('category', '==', category)] : [];
-
-  const cursorCondition = cursor ? [startAfter(cursor)] : [];
-
-  const q = query(
-    collection(db, 'posts'),
-    ...categoryCondition,
-    ...baseConditions,
-    ...cursorCondition,
-  );
-
+  const q = query(collection(db, 'posts'), ...conditions);
   const snap = await getDocs(q);
 
   const posts: BlogPost[] = snap.docs.map((doc) => {
@@ -44,6 +28,7 @@ export const fetchPublishedBlogPosts = async ({
       title: data.title,
       slug: data.slug,
       category: data.category,
+      tags: data.tags ?? [],
       thumbnail: data.thumbnail,
       author: data.author,
       createdAt: toDate(data.createdAt),
