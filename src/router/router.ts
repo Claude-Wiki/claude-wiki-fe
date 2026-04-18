@@ -94,7 +94,7 @@ export class Router {
     if (!anchor) return;
 
     const href = anchor.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('//')) return;
+    if (!href || href.startsWith('http') || href.startsWith('//') || href.startsWith('#')) return;
 
     e.preventDefault();
     this.navigate(href);
