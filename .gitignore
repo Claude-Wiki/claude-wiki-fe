@@ -9,6 +9,10 @@ cypress/downloads
 # Bun
 bun.lockb
 
+# Bun 프로젝트는 bun.lock 만 사용 (npm/yarn 락파일 제외)
+package-lock.json
+yarn.lock
+
 # Logs
 logs
 *.log

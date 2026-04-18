@@ -45,5 +45,8 @@
     "*.{css,json,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "firebase": "^12.12.0"
   }
 }
