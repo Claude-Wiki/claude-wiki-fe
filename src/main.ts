@@ -5,6 +5,7 @@ import { HomePage } from '@/pages/home/HomePage';
 import { DocsListPage } from '@/pages/docs/DocsListPage';
 import { DocsDetailPage } from '@/pages/docs/DocsDetailPage';
 import { BlogListPage } from '@/pages/blog/BlogListPage';
+import { BlogListController } from '@/domains/blog/list/controller/blogListController';
 import { BlogDetailPage } from '@/pages/blog/BlogDetailPage';
 import { AdminLoginPage } from '@/pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from '@/pages/admin/AdminDashboardPage';
@@ -45,7 +46,7 @@ router
   })
   .register('/blog', () => {
     showLayout();
-    new BlogListPage(root).render();
+    void new BlogListController(new BlogListPage(root)).init();
   })
   .register('/blog/:slug', ({ slug }) => {
     showLayout();

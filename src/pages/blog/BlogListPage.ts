@@ -72,6 +72,41 @@ export class BlogListPage {
     });
   }
 
+  showSkeleton(): void {
+    const list = this.root.querySelector<HTMLElement>('.blog-card-list');
+    if (!list) return;
+    list.innerHTML = Array(3)
+      .fill(
+        `<li class="blog-card-skeleton">
+          <div class="skeleton-thumbnail"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line skeleton-line--short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-line--narrow"></div>
+          </div>
+        </li>`,
+      )
+      .join('');
+  }
+
+  showEmpty(): void {
+    const list = this.root.querySelector<HTMLElement>('.blog-card-list');
+    if (!list) return;
+    list.innerHTML = `<li class="blog-status-message">아직 게시된 글이 없습니다.</li>`;
+  }
+
+  showError(onRetry: () => void): void {
+    const list = this.root.querySelector<HTMLElement>('.blog-card-list');
+    if (!list) return;
+    list.innerHTML = `
+      <li class="blog-status-message blog-status-message--error">
+        <p>글을 불러오는 데 실패했습니다.</p>
+        <button class="blog-retry-btn">다시 시도</button>
+      </li>
+    `;
+    list.querySelector('.blog-retry-btn')?.addEventListener('click', onRetry);
+  }
+
   clearPosts(): void {
     const list = this.root.querySelector<HTMLElement>('.blog-card-list');
     if (list) list.innerHTML = '';
