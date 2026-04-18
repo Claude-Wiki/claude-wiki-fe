@@ -13,25 +13,25 @@
 
 ## 현재 Phase
 
-**Phase 0 — 탐색 & 의사결정** (진행 중)
+**Phase 2 — UI 마크업 & 스타일** (대기 중)
 
 ---
 
 ## Phase 목록
 
-### Phase 0 — 탐색 & 의사결정
+### Phase 0 — 탐색 & 의사결정 ✅
 
-- [ ] pencil MCP 로 디자인 노드(`3T3tQ`, `ngcbD`, `ZckLS`, `EO2II`, `Hhk80`) 치수·색·간격 추출 → `findings.md`
-- [ ] 아래 **결정 사항 5개** 확정
-- [ ] 필요한 추가 디자인 노드 ID 확인
-- [ ] **[commit 없음 — 탐색만]**
+- [x] pencil MCP 로 디자인 노드(`3T3tQ`, `ngcbD`, `ZckLS`, `EO2II`, `Hhk8O`) 치수·색·간격 추출 → `findings.md`
+- [x] 결정 사항 5개 확정
+- [x] 필요한 추가 디자인 노드 ID 확인
+- [x] **커밋 완료** `e6868bf`
 
-### Phase 1 — 데이터 레이어 (model)
+### Phase 1 — 데이터 레이어 (model) ✅
 
-- [ ] `src/domains/blog/types/blog.types.ts` — `BlogPost`, `BlogCategory`, `BlogCursor`, `BlogListQuery` 타입
-- [ ] `src/domains/blog/list/model/blogListModel.ts` — `fetchPublishedBlogPosts({ cursor, category })` (동시성 가드 포함)
-- [ ] `src/domains/blog/list/blogCategory.const.ts` — 고정 카테고리 상수
-- [ ] **`/commit` — `feat(blog): 블로그 피드 데이터 레이어 추가`**
+- [x] `src/domains/blog/types/blog.types.ts` — `BlogPost`, `BlogCategory`, `BlogCursor`, `BlogListQuery` 타입
+- [x] `src/domains/blog/list/model/blogListModel.ts` — `fetchPublishedBlogPosts({ cursor, category })` (isLoading 가드 포함)
+- [x] `src/domains/blog/list/blogCategory.const.ts` — 고정 카테고리 상수
+- [x] **`/commit` — `feat(blog): 블로그 피드 데이터 레이어 추가`**
 
 ### Phase 2 — UI 마크업 & 스타일 (view)
 
@@ -75,13 +75,13 @@
 
 각 결정은 Phase 0 종료 전에 사용자 승인을 받아 확정한다.
 
-| #   | 결정 포인트            | 옵션                                                                                                                                         | 선택                              | 근거                                                 |
-| --- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------------- |
-| 1   | Firebase client 의존성 | A. PR #26 머지 대기 / B. 이 브랜치에서 `firebase` 패키지·`client.ts` 자체 추가 / C. `feat/#24` 를 `setting/#25-...` 위로 리베이스 (stacked)  | **미정**                          | #26 과 변경 중복되면 머지 시 충돌                    |
-| 2   | 데이터 접근 계층       | A. 도메인 모델에 Firestore 쿼리 직접 구현 / B. #18 의 `postRepository` 머지 대기 후 사용 / C. 자체 구현 후 #18 머지 시 교체                  | **미정**                          | #18 도 OPEN · 충돌 가능                              |
-| 3   | 동시성 방지 방식       | A. `isLoading` 가드만 / B. 요청 토큰(`requestId`) 비교로 stale 응답 무시 / C. AbortController (Firestore 는 SDK 자체 취소 미지원이라 제한적) | **미정**                          | conventions.md: "fetch 동시성 해결 로직 필수"        |
-| 4   | 페이지 사이즈          | A. 10 (이슈 본문 기본값) / B. 12 (그리드 정렬 유리)                                                                                          | **미정**                          | Phase 0 에서 디자인 노드의 그리드 열 수 확인 후 결정 |
-| 5   | 폰트 표기 불일치       | `design.md` = NotionInter vs `globals.css` = Pretendard                                                                                      | **globals.css 따름 (Pretendard)** | 실제 코드 기준 · `design.md` 수정은 별도 이슈        |
+| #   | 결정 포인트            | 옵션 | 선택                                        | 근거                          |
+| --- | ---------------------- | ---- | ------------------------------------------- | ----------------------------- |
+| 1   | Firebase client 의존성 | —    | **C — `setting/#25` 병합 완료** (`958723f`) | 파일 충돌 없이 클린 병합      |
+| 2   | 데이터 접근 계층       | —    | **A — 도메인 모델에 직접 구현**             | #18 독립, 충돌 없음           |
+| 3   | 동시성 방지 방식       | —    | **A — `isLoading` 가드**                    | 단순·충분                     |
+| 4   | 페이지 사이즈          | —    | **A — 10**                                  | 단일 컬럼, 그리드 정렬 불필요 |
+| 5   | 폰트 표기 불일치       | —    | **globals.css (Pretendard)**                | 실제 코드 기준                |
 
 ---
 
