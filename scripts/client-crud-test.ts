@@ -1,5 +1,6 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { loadEnv } from 'vite';
+
+const env = loadEnv('development', process.cwd(), '');
 
 import { initializeApp, getApps } from 'firebase/app';
 import {
@@ -13,29 +14,23 @@ import {
   deleteDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  connectAuthEmulator,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, connectAuthEmulator } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: env.VITE_FIREBASE_API_KEY,
+  authDomain: env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: env.VITE_FIREBASE_APP_ID,
 };
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-if (process.env.NODE_ENV === 'development') {
-  connectFirestoreEmulator(db, '127.0.0.1', 8080);
-  connectAuthEmulator(auth, 'http://127.0.0.1:9099');
-}
+connectFirestoreEmulator(db, '127.0.0.1', 8080);
+connectAuthEmulator(auth, 'http://127.0.0.1:9099');
 
 const TEST_SLUG = 'client-crud-test-post';
 
@@ -88,7 +83,8 @@ async function testUpdate(id: string): Promise<void> {
   });
 
   const snap = await getDoc(doc(db, 'posts', id));
-  const data = snap.data()!;
+  if (!snap.exists()) throw new Error(`문서를 찾을 수 없음: ${id}`);
+  const data = snap.data();
   console.log(`  -> title    : ${data.title}`);
   console.log(`  -> published: ${data.published}`);
 }
@@ -107,12 +103,12 @@ async function testDelete(id: string): Promise<void> {
 
 async function main() {
   console.log('=== Firebase Client SDK CRUD 테스트 시작 ===');
-  console.log(`환경: ${process.env.NODE_ENV === 'development' ? '에뮬레이터 (127.0.0.1:8080)' : '실제 Firebase (주의!)'}`);
-  console.log(`프로젝트: ${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}`);
+  console.log(`환경: 에뮬레이터 (127.0.0.1:8080)`);
+  console.log(`프로젝트: ${env.VITE_FIREBASE_PROJECT_ID}`);
 
   // 어드민 로그인
-  const email = process.env.TEST_ADMIN_EMAIL!;
-  const password = process.env.TEST_ADMIN_PASSWORD!;
+  const email = env.TEST_ADMIN_EMAIL;
+  const password = env.TEST_ADMIN_PASSWORD;
   console.log(`\n[AUTH] ${email} 로그인 중...`);
   await signInWithEmailAndPassword(auth, email, password);
   console.log('  -> 로그인 성공');

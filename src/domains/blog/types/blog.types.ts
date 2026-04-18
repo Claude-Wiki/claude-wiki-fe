@@ -1,4 +1,5 @@
-import type { QueryDocumentSnapshot } from 'firebase/firestore';
+export type { Post, PostSummary, PostAuthor } from '@/shared/types/post.types';
+export type { PostCursor } from '@/shared/lib/firebase/postRepository';
 
 export type BlogCategory =
   | '전체'
@@ -9,29 +10,3 @@ export type BlogCategory =
   | '자동화'
   | 'CLAUDE.md'
   | '트러블슈팅';
-
-export type BlogCursor = QueryDocumentSnapshot;
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  category: string;
-  tags: string[];
-  thumbnail?: string;
-  author: {
-    uid: string;
-    displayName: string;
-  };
-  createdAt: Date;
-}
-
-export interface BlogListQuery {
-  cursor?: BlogCursor;
-  pageSize?: number;
-}
-
-export interface BlogListResult {
-  posts: BlogPost[];
-  nextCursor: BlogCursor | null;
-}
