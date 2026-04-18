@@ -11,14 +11,13 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// 앱이 처음 생성될 때만 에뮬레이터 연결 (HMR 중복 방지)
-const isNewApp = !getApps().length;
-const app = isNewApp ? initializeApp(firebaseConfig) : getApps()[0];
+const isFirstInit = getApps().length === 0;
+const app = isFirstInit ? initializeApp(firebaseConfig) : getApps()[0];
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-if (import.meta.env.DEV && isNewApp) {
+if (import.meta.env.DEV && isFirstInit) {
   connectFirestoreEmulator(db, '127.0.0.1', 8080);
   connectAuthEmulator(auth, 'http://127.0.0.1:9099');
 }
