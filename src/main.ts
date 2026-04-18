@@ -1,3 +1,7 @@
+if (import.meta.env.DEV) {
+  import('react-grab');
+}
+
 import '@/styles/globals.css';
 import { Layout } from '@/shared/layouts/Layout';
 import { Router } from '@/router/router';
