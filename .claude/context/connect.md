@@ -84,7 +84,7 @@ interface ImportMeta {
 
 ```bash
 cd ../claude-wiki-be
-npm run emulator   # http://127.0.0.1:4000 에서 UI 확인 가능
+bun run emulator   # http://127.0.0.1:4000 에서 UI 확인 가능
 ```
 
 > 프론트엔드 `bun run dev` 를 먼저 실행하면 에뮬레이터 미기동 상태라 `connect*Emulator` 호출이 WebSocket 연결 시도하면서 콘솔 경고가 뜰 수 있음. 개발 중엔 에뮬레이터 먼저 띄우고 프론트를 켠다.
@@ -104,7 +104,7 @@ export const checkIsAdmin = async (): Promise<boolean> => {
 };
 ```
 
-> Custom Claim `is_admin: true` 는 백엔드(`claude-wiki-be`)에서 `npm run set-admin` 으로 부여.
+> Custom Claim `is_admin: true` 는 백엔드(`claude-wiki-be`)에서 `bun run set-admin` 으로 부여.
 
 ---
 
@@ -127,8 +127,8 @@ await signInWithEmailAndPassword(auth, email, password);
 
 ```bash
 cd ../claude-wiki-be
-npm run crud-test      # 실제 Firebase
-npm run crud-test:dev  # 로컬 에뮬레이터
+bun run crud-test      # 실제 Firebase
+bun run crud-test:dev  # 로컬 에뮬레이터
 ```
 
 > 테스트 계정 정보는 `.env` 의 `TEST_ADMIN_EMAIL`, `TEST_ADMIN_PASSWORD` 로 관리 (커밋 금지).
