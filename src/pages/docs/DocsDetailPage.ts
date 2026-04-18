@@ -1,3 +1,4 @@
+import { TocScrollSpy } from '@/domains/docs/detail/TocScrollSpy';
 import { DocsDetailView } from '@/domains/docs/detail/view/DocsDetailView';
 import type { DocContent, DocItem } from '@/domains/docs/types/docs.types';
 
@@ -54,6 +55,7 @@ const FALLBACK_DOC: DocContent = {
 export class DocsDetailPage {
   private root: HTMLElement;
   private slug: string;
+  private scrollSpy: TocScrollSpy | null = null;
 
   constructor(root: HTMLElement, slug: string) {
     this.root = root;
@@ -61,6 +63,16 @@ export class DocsDetailPage {
   }
 
   render(): void {
-    this.root.innerHTML = `<main><h1>Doc: ${this.slug}</h1></main>`;
+    this.scrollSpy?.destroy();
+
+    const currentDoc = DOC_CONTENTS[this.slug] ?? { ...FALLBACK_DOC, slug: this.slug };
+    const view = new DocsDetailView(this.root);
+    view.render(DOC_LIST, currentDoc, this.slug);
+
+    const article = this.root.querySelector('.docs-content');
+    const tocNav = this.root.querySelector('.docs-toc-nav');
+    if (article && tocNav) {
+      this.scrollSpy = new TocScrollSpy(article, tocNav);
+    }
   }
 }
