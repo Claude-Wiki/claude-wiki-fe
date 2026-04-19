@@ -2,8 +2,7 @@ import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase/client';
 import type { Post } from '@/shared/types/post.types';
 import { MOCK_POSTS } from '@/shared/api/mockData';
-
-const IS_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+import { IS_MOCK } from '@/shared/lib/env';
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
   if (IS_MOCK) {

@@ -1,7 +1,6 @@
 import { postRepository } from '@/shared/lib/firebase/postRepository';
 import { MOCK_POSTS } from '@/shared/api/mockData';
-
-const IS_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+import { IS_MOCK } from '@/shared/lib/env';
 
 export const getPostBySlug = async (slug: string) => {
   if (IS_MOCK) {
