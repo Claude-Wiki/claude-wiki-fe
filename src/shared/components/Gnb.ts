@@ -6,6 +6,8 @@ export class Gnb {
   }
 
   render(): HTMLElement {
+    window.addEventListener('routechange', () => this.setActiveLink());
+
     this.container.innerHTML = `
       <nav class="gnb-inner">
         <div class="gnb-left">
@@ -46,10 +48,9 @@ export class Gnb {
     const path = location.pathname;
     this.container.querySelectorAll<HTMLAnchorElement>('.gnb-nav-link').forEach((link) => {
       const linkPath = link.dataset.path ?? '';
-      if (path === linkPath || (linkPath.length > 1 && path.startsWith(linkPath))) {
-        link.classList.add('is-active');
-        link.ariaCurrent = 'page';
-      }
+      const isActive = path === linkPath || (linkPath.length > 1 && path.startsWith(linkPath));
+      link.classList.toggle('is-active', isActive);
+      link.ariaCurrent = isActive ? 'page' : '';
     });
   }
 }

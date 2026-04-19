@@ -60,6 +60,10 @@
   text-decoration: none;
 }
 
+.landing-brand:hover {
+  text-decoration: none;
+}
+
 .landing-nav-docs {
   font-family: var(--font-sans);
   font-size: var(--font-size-nav);
