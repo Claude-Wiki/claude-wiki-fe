@@ -1,4 +1,4 @@
-import { type Post } from '@/shared/types/post.types';
+import { type Post, type PostSummary } from '@/shared/types/post.types';
 
 const buildTocHtml = (headings: { id: string; text: string }[]): string => {
   if (headings.length === 0) return '';
@@ -26,7 +26,7 @@ const extractHeadings = (html: string): { id: string; text: string }[] => {
   return headings;
 };
 
-const buildSidebarHtml = (posts: Post[], currentSlug: string): string => {
+const buildSidebarHtml = (posts: PostSummary[], currentSlug: string): string => {
   const items = posts
     .map((p) => {
       const isActive = p.slug === currentSlug;
@@ -153,7 +153,7 @@ export class DocDetailView {
     `;
   }
 
-  render(post: Post, contentHtml: string, allDocs: Post[]): void {
+  render(post: Post, contentHtml: string, allDocs: PostSummary[]): void {
     this.cleanupTocScroll();
     const createdAt =
       post.createdAt?.toDate().toLocaleDateString('ko-KR', {

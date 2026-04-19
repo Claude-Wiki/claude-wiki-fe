@@ -1,23 +1,19 @@
 import { marked } from '@/lib/markdown/markedConfig';
-import { DocDetailModel } from '@/domains/docs/detail/model/docDetailModel';
+import { getDocBySlug } from '@/domains/docs/detail/model/docDetailModel';
+import { getDocsList } from '@/domains/docs/list/model/docsListModel';
 import { DocDetailView } from '@/domains/docs/detail/view/DocDetailView';
 
 export class DocDetailController {
-  private model: DocDetailModel;
   private view: DocDetailView;
 
   constructor(container: HTMLElement) {
-    this.model = new DocDetailModel();
     this.view = new DocDetailView(container);
   }
 
   async load(slug: string): Promise<void> {
     this.view.renderLoading();
     try {
-      const [post, allDocs] = await Promise.all([
-        this.model.getPost(slug),
-        this.model.getAllDocs(),
-      ]);
+      const [post, allDocs] = await Promise.all([getDocBySlug(slug), getDocsList()]);
       const contentHtml = await marked(post.content);
       this.view.render(post, contentHtml, allDocs);
     } catch (err) {

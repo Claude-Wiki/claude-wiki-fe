@@ -1,20 +1,18 @@
 import { marked } from '@/lib/markdown/markedConfig';
-import { BlogDetailModel } from '@/domains/blog/detail/model/blogDetailModel';
+import { getPostBySlug } from '@/domains/blog/detail/model/blogDetailModel';
 import { PostDetailView } from '@/shared/components/PostDetailView';
 
 export class BlogDetailController {
-  private model: BlogDetailModel;
   private view: PostDetailView;
 
   constructor(container: HTMLElement) {
-    this.model = new BlogDetailModel();
     this.view = new PostDetailView(container);
   }
 
   async load(slug: string): Promise<void> {
     this.view.renderLoading();
     try {
-      const post = await this.model.getPost(slug);
+      const post = await getPostBySlug(slug);
       const contentHtml = await marked(post.content);
       this.view.render(post, contentHtml, '/blog');
     } catch (err) {

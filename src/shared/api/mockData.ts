@@ -6,6 +6,7 @@ const now = Timestamp.now();
 export const MOCK_POSTS: Post[] = [
   {
     id: 'mock-1',
+    postType: 'docs',
     title: 'Claude Code 시작하기',
     slug: 'claude-code-getting-started',
     category: 'docs',
@@ -45,6 +46,7 @@ claude review   # 코드 리뷰 요청
   },
   {
     id: 'mock-2',
+    postType: 'docs',
     title: 'MCP 서버 설정',
     slug: 'mcp-server-setup',
     category: 'docs',
@@ -64,6 +66,7 @@ Model Context Protocol(MCP)은 Claude Code가 외부 도구와 통신하는 방�
   },
   {
     id: 'mock-3',
+    postType: 'blog',
     title: 'Claude Code로 PR 자동화하기',
     slug: 'pr-automation-with-claude',
     category: 'blog',
