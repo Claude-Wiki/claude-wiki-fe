@@ -14,8 +14,7 @@ export const getPostForEdit = (id: string) => postRepository.getById(id);
 export const createPost = (input: PostCreateInput) => postRepository.create(input);
 
 /** 에디터 — 수정 */
-export const updatePost = (id: string, input: PostUpdateInput) =>
-  postRepository.update(id, input);
+export const updatePost = (id: string, input: PostUpdateInput) => postRepository.update(id, input);
 
 /** 에디터 — 발행 토글 */
 export const togglePublished = (id: string, published: boolean) =>
