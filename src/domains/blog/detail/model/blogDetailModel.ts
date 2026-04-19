@@ -1,8 +1,3 @@
-import { getPostBySlug } from '@/shared/api/postApi';
-import type { Post } from '@/shared/types/post.types';
+import { postRepository } from '@/shared/lib/firebase/postRepository';
 
-export class BlogDetailModel {
-  async getPost(slug: string): Promise<Post> {
-    return getPostBySlug(slug);
-  }
-}
+export const getPostBySlug = (slug: string) => postRepository.getBySlug(slug);
