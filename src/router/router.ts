@@ -60,6 +60,17 @@ export class Router {
   }
 
   /**
+   * 현재 히스토리 항목을 주어진 경로로 교체하고 핸들러를 실행한다.
+   * pushState와 달리 히스토리 스택에 새 항목을 추가하지 않는다.
+   *
+   * @param path 교체할 경로 (예: `/docs/getting-start`)
+   */
+  replace(path: string): void {
+    history.replaceState(null, '', path);
+    this.resolve();
+  }
+
+  /**
    * 현재 URL(`location.pathname`)을 등록된 라우트와 매칭하여 핸들러를 실행한다.
    *
    * 매칭되는 라우트가 없으면 404 화면을 렌더링한다.

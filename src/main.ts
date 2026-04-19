@@ -6,7 +6,6 @@ import '@/styles/globals.css';
 import { Layout } from '@/shared/layouts/Layout';
 import { Router } from '@/router/router';
 import { HomePage } from '@/pages/home/HomePage';
-import { DocsListPage } from '@/pages/docs/DocsListPage';
 import { DocsDetailPage } from '@/pages/docs/DocsDetailPage';
 import { BlogListPage } from '@/pages/blog/BlogListPage';
 import { BlogDetailPage } from '@/pages/blog/BlogDetailPage';
@@ -40,8 +39,7 @@ router
     new HomePage(root).render();
   })
   .register('/docs', () => {
-    showLayout();
-    new DocsListPage(root).render();
+    router.replace('/docs/getting-start');
   })
   .register('/docs/:slug', ({ slug }) => {
     showLayout();
