@@ -571,3 +571,75 @@ button {
   font-weight: var(--font-weight-medium); /* 500 */
   color: var(--color-accent);
 }
+
+/* --------------------------------------------------------------------------
+   Docs List Page (/docs)
+   -------------------------------------------------------------------------- */
+
+.docs-loading,
+.docs-error {
+  padding: 2rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.docs-list-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.docs-list-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 2.5rem;
+}
+
+.docs-list-section {
+  margin-bottom: 2.5rem;
+}
+
+.docs-list-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.docs-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.docs-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-standard);
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.docs-list-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.docs-list-card-category {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}
+
+.docs-list-card-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
