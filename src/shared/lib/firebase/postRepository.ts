@@ -82,10 +82,12 @@ export const postRepository = {
     return snap.data();
   },
 
-  async getBySlug(slug: string, publishedOnly = true): Promise<Post> {
-    const constraints = publishedOnly
-      ? [where('slug', '==', slug), where('published', '==', true)]
-      : [where('slug', '==', slug)];
+  async getBySlug(slug: string, publishedOnly = true, postType?: PostType): Promise<Post> {
+    const constraints = [
+      where('slug', '==', slug),
+      ...(publishedOnly ? [where('published', '==', true)] : []),
+      ...(postType ? [where('postType', '==', postType)] : []),
+    ];
     const snap = await getDocs(query(postsCol(), ...constraints));
     if (snap.empty) throw new Error(`post not found: ${slug}`);
     return snap.docs[0].data();
