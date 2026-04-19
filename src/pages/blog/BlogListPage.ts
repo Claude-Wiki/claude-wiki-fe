@@ -1,6 +1,4 @@
 import './BlogListPage.css';
-import { BLOG_CATEGORIES } from '@/domains/blog/list/blogCategory.const';
-import type { BlogCategory } from '@/domains/blog/types/blog.types';
 import type { PostSummary } from '@/shared/types/post.types';
 import type { Timestamp } from 'firebase/firestore';
 
@@ -23,12 +21,6 @@ const renderCard = (post: PostSummary): string => `
   </li>
 `;
 
-const renderChips = (active: BlogCategory): string =>
-  BLOG_CATEGORIES.map(
-    (cat) =>
-      `<button class="blog-chip${cat === active ? ' blog-chip--active' : ''}" data-category="${escape(cat)}">${escape(cat)}</button>`,
-  ).join('');
-
 export class BlogListPage {
   private root: HTMLElement;
 
@@ -45,19 +37,27 @@ export class BlogListPage {
               <h1 class="blog-title">블로그</h1>
               <p class="blog-subtitle">클로드 코드 원정대의 인사이트와 경험을 공유합니다</p>
             </div>
-            <div class="blog-chips">
-              ${renderChips('전체')}
-            </div>
+            <div class="blog-chips"></div>
             <hr class="blog-divider" />
           </section>
 
           <section class="blog-feed">
             <ul class="blog-card-list"></ul>
-            <div class="blog-sentinel" aria-hidden="true"></div>
           </section>
         </div>
       </div>
     `;
+  }
+
+  renderChips(categories: string[]): void {
+    const container = this.root.querySelector<HTMLElement>('.blog-chips');
+    if (!container) return;
+    container.innerHTML = categories
+      .map(
+        (cat) =>
+          `<button class="blog-chip${cat === '전체' ? ' blog-chip--active' : ''}" data-category="${escape(cat)}">${escape(cat)}</button>`,
+      )
+      .join('');
   }
 
   renderPosts(posts: PostSummary[]): void {
@@ -66,7 +66,7 @@ export class BlogListPage {
     list.insertAdjacentHTML('beforeend', posts.map(renderCard).join(''));
   }
 
-  setActiveChip(category: BlogCategory): void {
+  setActiveChip(category: string): void {
     this.root.querySelectorAll<HTMLButtonElement>('.blog-chip').forEach((btn) => {
       btn.classList.toggle('blog-chip--active', btn.dataset.category === category);
     });
@@ -112,12 +112,8 @@ export class BlogListPage {
     if (list) list.innerHTML = '';
   }
 
-  getSentinel(): HTMLElement | null {
-    return this.root.querySelector('.blog-sentinel');
-  }
-
-  getChips(): NodeListOf<HTMLButtonElement> {
-    return this.root.querySelectorAll<HTMLButtonElement>('.blog-chip');
+  getChipsContainer(): HTMLElement {
+    return this.root.querySelector<HTMLElement>('.blog-chips') ?? document.createElement('div');
   }
 
   getCardList(): HTMLElement | null {
