@@ -33,4 +33,7 @@ HARNESS_LOG_FROM_HOOK=1 claude -p "/harness-log" >/dev/null 2>&1 || {
   echo "[harness-log] 스킬 실행 실패 — 커밋은 계속 진행" >&2
 }
 
+# 생성된 하네스 로그 스테이징
+git add HARNESS-LOG/harness-log-v*.md 2>/dev/null || true
+
 exit 0

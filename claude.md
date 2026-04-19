@@ -40,7 +40,8 @@ claude-wiki-fe/
 ├── .gitignore
 ├── CLAUDE.md
 ├── DESIGN.md                   # 공통 디자인 시스템
-├── HARNESS-LOG.md              # 하네스 실험 기록 (절대 임의 수정 금지)
+├── HARNESS-LOG/                # 하네스 실험 기록 (절대 임의 수정 금지)
+│   └── harness-log-vXXX.md
 └── README.md
 ```
 
