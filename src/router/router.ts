@@ -31,21 +31,6 @@ export class Router {
     return this;
   }
 
-  /**
-   * 경로 패턴과 핸들러를 라우터에 등록한다.
-   *
-   * `:param` 형식의 동적 세그먼트를 지원하며,
-   * 매칭 시 파라미터 이름과 값을 핸들러에 전달한다.
-   *
-   * @param path 등록할 경로 패턴 (예: `/articles/:id`)
-   * @param handler 경로 매칭 시 실행할 핸들러. 추출된 파라미터를 인자로 받는다.
-   * @returns 메서드 체이닝을 위해 인스턴스 자신을 반환
-   */
-  beforeEach(cb: () => void): this {
-    this.beforeEachCallback = cb;
-    return this;
-  }
-
   register(path: string, handler: RouteHandler): this {
     const paramNames: string[] = [];
     const pattern = new RegExp(
