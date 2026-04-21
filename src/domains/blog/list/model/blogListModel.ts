@@ -1,12 +1,12 @@
-import { postRepository, type PostCursor } from '@/shared/lib/firebase/postRepository';
+import { postRepository } from '@/shared/lib/firebase/postRepository';
 import type { PostSummary } from '@/shared/types/post.types';
 import { MOCK_POSTS } from '@/shared/api/mockData';
 import { IS_MOCK } from '@/shared/lib/env';
 
-export const getPostList = async (cursor?: PostCursor) => {
+export const getPostList = async (): Promise<PostSummary[]> => {
   if (IS_MOCK) {
-    const posts: PostSummary[] = MOCK_POSTS.filter((p) => p.postType === 'blog');
-    return { posts, nextCursor: null, hasMore: false };
+    const posts = MOCK_POSTS.filter((p) => p.postType === 'blog') as PostSummary[];
+    return posts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
   }
-  return postRepository.getPublishedList('blog', cursor);
+  return postRepository.getAllPublished('blog');
 };

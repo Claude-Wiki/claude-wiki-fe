@@ -15,6 +15,7 @@ interface Route {
 export class Router {
   private routes: Route[] = [];
   private root: HTMLElement;
+  private beforeEachCallback?: () => void;
 
   /**
    * @param root 라우트 핸들러가 콘텐츠를 렌더링할 루트 DOM 요소
@@ -23,6 +24,11 @@ export class Router {
     this.root = root;
     window.addEventListener('popstate', () => this.resolve());
     document.addEventListener('click', (e) => this.handleLinkClick(e));
+  }
+
+  beforeEach(cb: () => void): this {
+    this.beforeEachCallback = cb;
+    return this;
   }
 
   /**
@@ -65,6 +71,7 @@ export class Router {
    * 매칭되는 라우트가 없으면 404 화면을 렌더링한다.
    */
   resolve(): void {
+    this.beforeEachCallback?.();
     const path = location.pathname;
     for (const route of this.routes) {
       const match = path.match(route.pattern);
