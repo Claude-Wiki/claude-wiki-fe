@@ -1,12 +1,13 @@
 export class Gnb {
   private container: HTMLElement;
+  private boundSetActiveLink = () => this.setActiveLink();
 
   constructor() {
     this.container = document.createElement('header');
   }
 
   render(): HTMLElement {
-    window.addEventListener('routechange', () => this.setActiveLink());
+    window.addEventListener('routechange', this.boundSetActiveLink);
 
     this.container.innerHTML = `
       <nav class="gnb-inner">
@@ -42,6 +43,10 @@ export class Gnb {
 
     this.setActiveLink();
     return this.container;
+  }
+
+  destroy(): void {
+    window.removeEventListener('routechange', this.boundSetActiveLink);
   }
 
   private setActiveLink(): void {
