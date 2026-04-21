@@ -111,12 +111,14 @@
 /* --------------------------------------------------------------------------
    Base Reset & Global Styles
    -------------------------------------------------------------------------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {
@@ -135,11 +137,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  height: 100dvh; /* definite height — body never overflows viewport */
+  overflow: hidden;
 }
 
 #root {
   flex: 1;
+  min-height: 0; /* allow flex item to shrink below content size */
+  overflow-y: auto; /* general pages scroll within #root */
 }
 
 a {

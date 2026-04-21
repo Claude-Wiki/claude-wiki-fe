@@ -1,3 +1,5 @@
+import { BlogDetailController } from '@/domains/blog/detail/controller/blogDetailController';
+
 export class BlogDetailPage {
   private root: HTMLElement;
   private slug: string;
@@ -8,6 +10,7 @@ export class BlogDetailPage {
   }
 
   render(): void {
-    this.root.innerHTML = `<main><h1>Blog: ${this.slug}</h1></main>`;
+    const controller = new BlogDetailController(this.root);
+    controller.load(this.slug);
   }
 }

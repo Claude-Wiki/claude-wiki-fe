@@ -26,6 +26,11 @@ export class Router {
     document.addEventListener('click', (e) => this.handleLinkClick(e));
   }
 
+  beforeEach(cb: () => void): this {
+    this.beforeEachCallback = cb;
+    return this;
+  }
+
   /**
    * 경로 패턴과 핸들러를 라우터에 등록한다.
    *
@@ -101,7 +106,7 @@ export class Router {
     if (!anchor) return;
 
     const href = anchor.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('//')) return;
+    if (!href || href.startsWith('http') || href.startsWith('//') || href.startsWith('#')) return;
 
     e.preventDefault();
     this.navigate(href);

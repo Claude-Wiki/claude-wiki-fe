@@ -1,3 +1,5 @@
+import { DocDetailController } from '@/domains/docs/detail/controller/docDetailController';
+
 export class DocsDetailPage {
   private root: HTMLElement;
   private slug: string;
@@ -8,6 +10,7 @@ export class DocsDetailPage {
   }
 
   render(): void {
-    this.root.innerHTML = `<main><h1>Doc: ${this.slug}</h1></main>`;
+    const controller = new DocDetailController(this.root);
+    controller.load(this.slug);
   }
 }
