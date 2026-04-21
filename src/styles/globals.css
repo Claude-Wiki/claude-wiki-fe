@@ -243,7 +243,7 @@ button {
 
 .gnb-nav-link.is-active {
   font-weight: var(--font-weight-semibold); /* 600 */
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 /* 검색 label 컨테이너 */

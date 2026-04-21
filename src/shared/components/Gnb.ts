@@ -1,11 +1,14 @@
 export class Gnb {
   private container: HTMLElement;
+  private boundSetActiveLink = () => this.setActiveLink();
 
   constructor() {
     this.container = document.createElement('header');
   }
 
   render(): HTMLElement {
+    window.addEventListener('routechange', this.boundSetActiveLink);
+
     this.container.innerHTML = `
       <nav class="gnb-inner">
         <div class="gnb-left">
@@ -42,14 +45,17 @@ export class Gnb {
     return this.container;
   }
 
+  destroy(): void {
+    window.removeEventListener('routechange', this.boundSetActiveLink);
+  }
+
   private setActiveLink(): void {
     const path = location.pathname;
     this.container.querySelectorAll<HTMLAnchorElement>('.gnb-nav-link').forEach((link) => {
       const linkPath = link.dataset.path ?? '';
-      if (path === linkPath || (linkPath.length > 1 && path.startsWith(linkPath))) {
-        link.classList.add('is-active');
-        link.ariaCurrent = 'page';
-      }
+      const isActive = path === linkPath || (linkPath.length > 1 && path.startsWith(linkPath));
+      link.classList.toggle('is-active', isActive);
+      link.ariaCurrent = isActive ? 'page' : '';
     });
   }
 }

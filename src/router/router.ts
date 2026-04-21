@@ -78,6 +78,7 @@ export class Router {
   resolve(): void {
     this.beforeEachCallback?.();
     const path = location.pathname;
+    window.dispatchEvent(new CustomEvent('routechange', { detail: { path } }));
     for (const route of this.routes) {
       const match = path.match(route.pattern);
       if (match) {
