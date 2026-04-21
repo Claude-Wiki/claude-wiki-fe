@@ -1,3 +1,7 @@
+if (import.meta.env.DEV) {
+  import('react-grab');
+}
+
 import '@/styles/globals.css';
 import { Layout } from '@/shared/layouts/Layout';
 import { Router } from '@/router/router';
@@ -5,6 +9,7 @@ import { HomePage } from '@/pages/home/HomePage';
 import { DocsListPage } from '@/pages/docs/DocsListPage';
 import { DocsDetailPage } from '@/pages/docs/DocsDetailPage';
 import { BlogListPage } from '@/pages/blog/BlogListPage';
+import { BlogListController } from '@/domains/blog/list/controller/blogListController';
 import { BlogDetailPage } from '@/pages/blog/BlogDetailPage';
 import { AdminLoginPage } from '@/pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from '@/pages/admin/AdminDashboardPage';
@@ -30,7 +35,13 @@ const hideLayout = () => {
 
 const router = new Router(root);
 
+let activeController: { destroy?: () => void } | null = null;
+
 router
+  .beforeEach(() => {
+    activeController?.destroy?.();
+    activeController = null;
+  })
   .register('/', () => {
     hideLayout();
     new HomePage(root).render();
@@ -45,7 +56,11 @@ router
   })
   .register('/blog', () => {
     showLayout();
-    new BlogListPage(root).render();
+    const controller = new BlogListController(new BlogListPage(root), (path) =>
+      router.navigate(path),
+    );
+    activeController = controller;
+    void controller.init();
   })
   .register('/blog/:slug', ({ slug }) => {
     showLayout();

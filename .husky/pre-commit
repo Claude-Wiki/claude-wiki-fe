@@ -1,1 +1,2 @@
 bun lint-staged
+bash "$(git rev-parse --show-toplevel)/.husky/harness-log.sh"

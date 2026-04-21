@@ -7,7 +7,7 @@
       "Grep",
       "LS",
       "Edit",
-      "Write(HARNESS-LOG.md)",
+      "Write(HARNESS-LOG/**)",
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git log:*)",

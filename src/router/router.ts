@@ -41,6 +41,11 @@ export class Router {
    * @param handler 경로 매칭 시 실행할 핸들러. 추출된 파라미터를 인자로 받는다.
    * @returns 메서드 체이닝을 위해 인스턴스 자신을 반환
    */
+  beforeEach(cb: () => void): this {
+    this.beforeEachCallback = cb;
+    return this;
+  }
+
   register(path: string, handler: RouteHandler): this {
     const paramNames: string[] = [];
     const pattern = new RegExp(

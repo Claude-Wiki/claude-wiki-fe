@@ -57,9 +57,11 @@ STAGED=$(git diff --cached --name-only -- .claude CLAUDE.md)
 ```bash
 DIFF=$(git diff --cached -- .claude CLAUDE.md)
 TREE=$(find .claude -type f 2>/dev/null | sort)
+CHANGES=$(git diff --cached --name-status -- .claude CLAUDE.md)
 ```
 
 - `tree`는 macOS 기본 미설치 → `find ... | sort` 사용
+- `CHANGES`: `git diff --cached --name-status` 결과로, 파일별 상태(`A`/`M`/`D`) 파악에 사용
 - `.claude/` 자체가 없으면 트리 섹션은 `(없음)`으로 표기하고 `CLAUDE.md`만 기록
 - `DIFF`가 비어있으면 (예: 모드 변경만) 파일 생성하지 않고 종료
 
@@ -91,16 +93,35 @@ TARGET="HARNESS-LOG/harness-log-v${NEXT}.md"
 ## 1. 변경 내용 요약
 
 (Claude가 diff를 읽고 자연어로 요약. 무엇이 왜 바뀌었는지 불릿 형태로.
- 예시:
- - `.claude/rules/conventions.md`: 타입 파일 명명 규칙 추가
- - `.claude/skills/harness-log/SKILL.md`: 신규 스킬 추가
- - `CLAUDE.md`: 디렉토리 구조 섹션 갱신
-)
+예시:
+
+- `.claude/rules/conventions.md`: 타입 파일 명명 규칙 추가
+- `.claude/skills/harness-log/SKILL.md`: 신규 스킬 추가
+- `CLAUDE.md`: 디렉토리 구조 섹션 갱신
+  )
 
 ## 2. .claude 디렉토리 구조
 
 \`\`\`
-(find 결과 또는 tree 결과)
+(TREE와 CHANGES를 바탕으로 Claude가 직접 트리를 구성하여 작성)
+(tree 명령 스타일 박스 문자 사용: ├──, └──, │)
+(디렉토리는 끝에 / 표시)
+(변경 파일 앞에만 마커 표시: [A] 추가 / [M] 수정 / [D] 삭제)
+(변경되지 않은 파일은 마커 없이 표시)
+
+예시:
+.claude/
+├── hooks/
+│ ├── [M] README.md
+│ └── [D] harness-log-precommit.sh
+├── [M] settings.json
+└── skills/
+└── harness-log/
+└── SKILL.md
+.husky/
+├── [A] harness-log.sh
+└── [M] pre-commit
+[M] claude.md
 \`\`\`
 
 ## 3. Raw Diff
@@ -111,33 +132,27 @@ TARGET="HARNESS-LOG/harness-log-v${NEXT}.md"
 ```
 
 요약 작성 가이드:
+
 - 파일 단위로 1~2 불릿
 - "무엇이" + "왜" 함께 (의도 추론) — diff에서 의도가 안 보이면 "무엇이"만 적는다
 - 추측은 명시적으로 표시 (예: "(추정) 컨벤션 강화 목적")
 
-### 6. 로그 파일 스테이징
-
-```bash
-git add "$TARGET"
-```
-
-### 7. 컨텍스트별 종료 처리
+### 6. 컨텍스트별 종료 처리
 
 - **hook 컨텍스트** (`HARNESS_LOG_FROM_HOOK=1`):
-  - 커밋을 직접 실행하지 않는다 (훅이 이어서 원래 커밋을 진행)
-  - 스테이징만 하고 종료
+  - 커밋을 직접 실행하지 않는다 (훅이 이어서 git add 및 원래 커밋을 진행)
+  - 로그 파일 생성 후 종료
 - **manual 컨텍스트**:
   - 변경 파일을 사용자에게 보여주고 커밋 메시지 제안
   - `/commit` 스킬이 구현되어 있으면 그것을 호출, 아니면 사용자가 직접 커밋하도록 안내
   - **푸시는 자동으로 하지 않는다** (사용자 명시 요청 시에만)
 
-### 8. 완료 메시지
+### 7. 완료 메시지
 
 스킬은 verbose 출력을 내지 않는다. 마지막에만 1~2줄로:
 
 ```
 ✓ harness-log-vXXX.md 생성 완료 (HARNESS-LOG/)
-✓ 커밋에 포함되도록 스테이징됨
 ```
 
 변경 없음으로 종료한 경우:
@@ -150,14 +165,14 @@ git add "$TARGET"
 
 ## 엣지 케이스
 
-| 상황 | 처리 |
-|------|------|
-| `HARNESS-LOG/` 디렉토리 없음 | `mkdir -p`로 생성 |
-| 기존 로그 번호 비연속 (v001, v003) | 최댓값 + 1 사용 (→ v004) |
-| `.claude/` 디렉토리 자체가 없음 | `CLAUDE.md`만 기록, 트리 섹션은 `(없음)` |
-| diff가 비어있음 | 파일 생성하지 않고 `기록할 변경사항 없음` 출력 후 종료 |
-| 동일 번호 파일이 이미 존재 | 덮어쓰지 않고 에러 반환 후 중단 |
-| 스테이징된 변경이 `HARNESS-LOG/` 뿐 | 무한 루프 방지를 위해 즉시 종료 |
+| 상황                                | 처리                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| `HARNESS-LOG/` 디렉토리 없음        | `mkdir -p`로 생성                                      |
+| 기존 로그 번호 비연속 (v001, v003)  | 최댓값 + 1 사용 (→ v004)                               |
+| `.claude/` 디렉토리 자체가 없음     | `CLAUDE.md`만 기록, 트리 섹션은 `(없음)`               |
+| diff가 비어있음                     | 파일 생성하지 않고 `기록할 변경사항 없음` 출력 후 종료 |
+| 동일 번호 파일이 이미 존재          | 덮어쓰지 않고 에러 반환 후 중단                        |
+| 스테이징된 변경이 `HARNESS-LOG/` 뿐 | 무한 루프 방지를 위해 즉시 종료                        |
 
 ---
 
@@ -180,22 +195,10 @@ fi
 
 ---
 
-## pre-commit 훅 설치
-
-git hooks 디렉토리(`.git/hooks/`)는 git이 추적하지 않으므로 별도 설치가 필요하다.
-
-```bash
-bash .claude/hooks/install-pre-commit.sh
-```
-
-자세한 내용은 [`.claude/hooks/README.md`](../../hooks/README.md) 참조.
-
----
-
 ## Rules
 
 1. **사용자가 명시적으로 요청하지 않은 파일은 절대 스테이징하지 않는다** (`git add .` 금지)
-2. 패치노트 생성 후에는 반드시 해당 파일을 `git add`로 스테이징한다
+2. 패치노트 파일의 `git add`는 스킬이 아닌 호출 측(`.husky/harness-log.sh` 또는 사용자)이 담당한다
 3. hook 컨텍스트에서는 절대 `git commit` 또는 `git push`를 실행하지 않는다
 4. manual 컨텍스트에서도 푸시는 사용자 명시 요청이 있을 때만
 5. 출력은 조용히 — 진행 상황 중계 금지, 최종 1~2줄만
