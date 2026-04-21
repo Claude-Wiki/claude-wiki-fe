@@ -8,5 +8,6 @@ export const getPostList = async (): Promise<PostSummary[]> => {
     const posts = MOCK_POSTS.filter((p) => p.postType === 'blog') as PostSummary[];
     return posts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
   }
-  return postRepository.getAllPublished('blog');
+  const posts = await postRepository.getAllPublished('blog');
+  return posts.sort((a, b) => b.createdAt.toMillis() - a.createdAt.toMillis());
 };
