@@ -36,9 +36,10 @@ claude-wiki-fe/
 │   │   ├── git-flow.md
 │   │   └── conventions.md
 │   ├── skills/                 # 재사용 가능한 작업 단위
-│   │   ├── commit/SKILL.md     # commit 플로우
-│   │   ├── pr/SKILL.md         # pr 플로우
-│   │   └── issues.md           # issue 플로우
+│   │   ├── commit/SKILL.md          # commit 플로우
+│   │   ├── pr/SKILL.md              # pr 플로우
+│   │   ├── create-issue/SKILL.md    # issue 생성 플로우
+│   │   └── tailwind-check/SKILL.md  # Tailwind 사용 현황 점검
 │   └── settings.json           # 권한 및 동작 설정
 ├── .husky/                     # Git 훅 (Husky 관리)
 ├── .gitignore
@@ -78,3 +79,5 @@ claude-wiki-fe/
 | `scenario.md`     | 유저 플로우              |
 
 커밋 전에는 `.claude/skills/commit/SKILL.md`를 조회해라.
+
+Tailwind 컨벤션 준수 여부를 점검할 때는 `/tailwind-check`를 실행해라.
