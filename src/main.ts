@@ -6,7 +6,6 @@ import '@/styles/globals.css';
 import { Layout } from '@/shared/layouts/Layout';
 import { Router } from '@/router/router';
 import { HomePage } from '@/pages/home/HomePage';
-import { DocsListPage } from '@/pages/docs/DocsListPage';
 import { DocsDetailPage } from '@/pages/docs/DocsDetailPage';
 import { BlogListPage } from '@/pages/blog/BlogListPage';
 import { BlogListController } from '@/domains/blog/list/controller/blogListController';
@@ -47,8 +46,7 @@ router
     new HomePage(root).render();
   })
   .register('/docs', () => {
-    showLayout();
-    new DocsListPage(root).render();
+    router.navigate('/docs/getting-started');
   })
   .register('/docs/:slug', ({ slug }) => {
     showLayout();
