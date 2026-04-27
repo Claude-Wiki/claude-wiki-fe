@@ -12,8 +12,11 @@ import { BlogListPage } from '@/pages/blog/BlogListPage';
 import { BlogListController } from '@/domains/blog/list/controller/blogListController';
 import { BlogDetailPage } from '@/pages/blog/BlogDetailPage';
 import { AdminLoginPage } from '@/pages/admin/AdminLoginPage';
+import { AdminLoginController } from '@/domains/admin/auth/controller/adminLoginController';
 import { AdminDashboardPage } from '@/pages/admin/AdminDashboardPage';
 import { AdminEditorPage } from '@/pages/admin/AdminEditorPage';
+import { subscribeAuthState } from '@/domains/admin/auth/model/authModel';
+import { requireAdmin } from '@/shared/lib/authGuard';
 
 Layout.mount();
 
@@ -68,19 +71,42 @@ router
   })
   .register('/admin', () => {
     showLayout();
-    new AdminLoginPage(root).render();
+    const controller = new AdminLoginController(new AdminLoginPage(root), (path) =>
+      router.navigate(path),
+    );
+    activeController = controller;
+    void controller.init();
   })
   .register('/admin/dashboard', () => {
-    showLayout();
-    new AdminDashboardPage(root).render();
+    void (async () => {
+      if (!(await requireAdmin((path) => router.navigate(path)))) return;
+      showLayout();
+      new AdminDashboardPage(root).render();
+    })();
   })
   .register('/admin/editor', () => {
-    showLayout();
-    new AdminEditorPage(root).render();
+    void (async () => {
+      if (!(await requireAdmin((path) => router.navigate(path)))) return;
+      showLayout();
+      new AdminEditorPage(root).render();
+    })();
   })
   .register('/admin/editor/:slug', ({ slug }) => {
-    showLayout();
-    new AdminEditorPage(root, slug).render();
+    void (async () => {
+      if (!(await requireAdmin((path) => router.navigate(path)))) return;
+      showLayout();
+      new AdminEditorPage(root, slug).render();
+    })();
   });
 
-router.resolve();
+// auth 초기화 완료 후 라우터 시작 (Firebase가 localStorage 토큰 복구 완료 신호)
+let authInitialized = false;
+
+subscribeAuthState((user) => {
+  if (!authInitialized) {
+    authInitialized = true;
+    router.resolve();
+  } else if (!user && location.pathname.startsWith('/admin/')) {
+    router.navigate('/admin');
+  }
+});
